@@ -1,3 +1,6 @@
+@import '~verovioscoreeditor/src/styles/VerovioScoreEditor.css';
+
+
 /* IcoMoon font licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html */
 @font-face {
   font-family: 'icomoon-multichoice';
@@ -8,6 +11,10 @@
     url('../fonts/icomoon.svg#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+
+*[viewBox]{
+  transform: translate(2em);
 }
 
 .h5p-multichoice .h5p-answers {
@@ -376,4 +383,10 @@
   top: auto;
   right: auto;
   padding-top: 2px;
+}
+
+#svg_output{
+  padding-bottom: 20%;
+  padding-left: 2%;
+  resize: vertical;
 }

@@ -4,8 +4,9 @@ var isDev = (nodeEnv !== 'production');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 var config = {
+  mode: "development",
   entry: {
-    dist: './js/multichoice.js'
+    dist: './entries/entry.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,28 +19,14 @@ var config = {
         loader: 'babel-loader'
       },
       {
-      //   test: /\.(scss|css)$/,
-      //   use: ['style-loader', 'css-loader', 'sass-loader'],
-      //   include: path.join(__dirname, 'src/styles')
-      // //   use: [{
-      // //     loader: 'style-loader', // inject CSS to page
-      // //   }, 
-      // //   {
-      // //     loader: 'css-loader', // translates CSS into CommonJS modules
-      // //   },  
-      // //   {
-      // //     loader: 'sass-loader' // compiles Sass to CSS
-      // //   }]
-      // },
       
-        test: /\.scss$/i,
+        test: /\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "postcss-loader",
-          },
-          "sass-loader"
+          }
         ]
       },
       {

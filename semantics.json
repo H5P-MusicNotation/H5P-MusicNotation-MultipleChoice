@@ -1,81 +1,48 @@
 [
-    {
-"name": "descriptions",
-"type": "list",
-"label": "Task descriptions",
-"optional": true,
-"entity": "descriptions",
-"min": 0,
-"description": "A guide telling the user how to answer this task",
-"widgets": [
-{
-"name": "VerticalTabs",
-"label": "Default"
-}
-],
-"field": {
-"name": "desc",
-"type": "group",
-"isSubContent": true,
-"label": "Description",
-"importance": "high",
-"expanded": true,
-"fields": [
-{
-"name": "desc1",
-"label": "Description",
-"type": "text",
-"tags": [
-"p",
-"br",
-"strong",
-"em"
-],
-"optional": true,
-"widget": "html"
-},
- {
-"name": "contents",
-"type": "list",
-"optional": true,
-"label": "",
-"entity": "Notation",
-"min": 0,
-"max": 1,
-"field": {
-"name": "question_notation",
-"type": "group",
-"label": "Notation",
-"fields": [
-{
-"name": "notationWidget",
-"type": "text",
-"description": "Add Notation",
-"optional": true,
-"default": "000000",
-"widget": "notationWidget"
-}
-]
-}}
-        ]
-    }
-},
-
-{
-"name": "quest",
-"type": "group",
-"label": "Question",
-"description": "Create a question with notation",
-
-"expanded": true,
-"fields": [
-
-{
-    "name": "question",    
+  {
+    "name": "media",
+    "type": "group",
+    "label": "Media",
+    "importance": "medium",
+    "fields": [
+      {
+        "name": "type",
+        "type": "library",
+        "label": "Type",
+        "importance": "medium",
+        "options": [
+          "H5P.Image 1.1",
+          "H5P.Video 1.6",
+          "H5P.Audio 1.5"
+        ],
+        "optional": true,
+        "description": "Optional media to display above the question."
+      },
+      {
+        "name": "disableImageZooming",
+        "type": "boolean",
+        "label": "Disable image zooming",
+        "importance": "low",
+        "default": false,
+        "optional": true,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "type",
+              "equals": "H5P.Image 1.1"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "question",
     "type": "text",
-   
+    "importance": "medium",
     "widget": "html",
-    "label": "Content",
+    "label": "Question",
     "enterMode": "p",
     "tags": [
       "strong",
@@ -88,46 +55,48 @@
       "code"
     ]
   },
- 
-   {
-"name": "questions",
-"type": "list",
-"optional": true,
-"label": "",
-"entity": "Notation",
-"min": 0,
-"max": 1,
-"field": {
-"name": "question_notation",
-"type": "group",
-"label": "Notation",
-"fields": [
-{
-"name": "notationWidget",
-"type": "text",
-"description": "Add Notation",
-"default": "000000",
-"widget": "notationWidget"
-}
-]
-}}
-]},
-
+  {
+    "name": "question_notation_list",
+    "type": "list",
+    "label": "Notation",
+    "entity": "notation",
+    "field": {
+      "name": "question_notation",
+      "type": "group",
+      "label": "Notation",
+      "expanded": false,
+      "fields": [
+        {
+          "name": "notationWidget",
+          "type": "text",
+          "description": "Add Notation",
+          "optional": true,
+          "default": "Notation",
+          "widget": "notationWidget"
+        },
+        {
+          "name": "interactiveSVG",
+          "type": "boolean",
+          "label": "Interactive Notation",
+          "description": "When checkbox is marked, the notation will be interactive in content view, otherwise only the SVG will be used.",
+          "default": false
+        },
+        {
+          "name": "meiStorage",
+          "type": "text",
+          "optional": true
+        }
+      ]
+    }
+  },
   {
     "name": "answers",
-    "description": "Create answer as opotion",
     "type": "list",
     "importance": "high",
-    "label": "Answers",
+    "label": "Available options",
     "entity": "option",
     "min": 1,
-   
-    "widgets": [
-{
-"name": "VerticalTabs",
-"label": "Default"
-}
-],
+    "defaultNum": 2,
     "field": {
       "name": "answer",
       "type": "group",
@@ -137,14 +106,42 @@
         {
           "name": "text",
           "type": "text",
+          "importance": "medium",
           "widget": "html",
-          "label": "Answer",
+          "label": "Text",
           "tags": [
             "strong",
             "em",
             "sub",
             "sup",
             "code"
+          ]
+        },
+        {
+          "name": "answer_notation",
+          "type": "group",
+          "label": "Notation",
+          "expanded": false,
+          "fields": [
+            {
+              "name": "notationWidget",
+              "type": "text",
+              "description": "Add Notation",
+              "optional": true,
+              "widget": "notationWidget"
+            },
+            {
+              "name": "interactiveSVG",
+              "type": "boolean",
+              "label": "Interactive Notation",
+              "description": "When checkbox is marked, the notation will be interactive in content view, otherwise only the SVG will be used.",
+              "default": false
+            },
+            {
+              "name": "meiStorage",
+              "type": "text",
+              "optional": true
+            }
           ]
         },
         {
@@ -216,13 +213,12 @@
       ]
     }
   },
-  
   {
     "name": "overallFeedback",
     "type": "group",
     "label": "Overall Feedback",
     "importance": "low",
-    "expanded": false,
+    "expanded": true,
     "fields": [
       {
         "name": "overallFeedback",

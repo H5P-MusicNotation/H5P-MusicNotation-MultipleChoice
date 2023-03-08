@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs"
+    },
+    "include": [
+        "./js/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "./src/deprecated",
+    ],
+
+}

@@ -1,5 +1,5 @@
 {
-  "name": "s4lms",
+  "name": "s4lms_multichoice",
   "version": "1.0.0",
   "description": "",
   "browserslist": [
@@ -22,7 +22,7 @@
     "sass-loader": "^12.6.0",   
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.6.0",
-    "verovioscoreeditor": "^1.2.7",
+    "verovioscoreeditor": "1.3.4",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
   }
