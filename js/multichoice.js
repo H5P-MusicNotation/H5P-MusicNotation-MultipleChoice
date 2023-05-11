@@ -1145,7 +1145,7 @@ const MCS4L = (function () {
       mutations.forEach(function (mutation) {
         Array.from(mutation.addedNodes).forEach(an => {
           if (an.constructor.name.toLowerCase().includes("element")) {
-            if (an.classList.contains("h5p-question-content")) {
+            if (an.classList.contains("h5p-question-content") && an.parentElement.classList.contains("h5p-multichoice")) {
               if (an.parentElement.querySelector(".h5p-vse-container") === null && !that.instancePassed) {
                 that.instancePassed = true
                 var vseContainerDiv = document.createElement("div")
@@ -1182,9 +1182,9 @@ const MCS4L = (function () {
       rootContainer = window.document.querySelectorAll(".question-container")[params.question_instance_num]
       if (rootContainer.getAttribute("instance-id") === null) {
         rootContainer.setAttribute("instance-id", params.question_instance_num)
-        that.activeQuestionContainerObserver.observe(rootContainer, {
-          attributes: true
-        })
+        // that.activeQuestionContainerObserver.observe(rootContainer, {
+        //   attributes: true
+        // })
       } else {
         //if(rootContainer.getAttribute("instance-id") == params.question_instance_num) return
       }
