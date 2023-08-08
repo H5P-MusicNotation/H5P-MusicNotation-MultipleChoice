@@ -1153,6 +1153,8 @@ const MCS4L = (function () {
                 an.parentNode.insertBefore(vseContainerDiv, an)
                 that.loadSVG(params)
               }
+            }else if(an.classList.contains("notation")){
+              that.adjustFrame(an)
             } 
           }
         })
@@ -1198,17 +1200,18 @@ const MCS4L = (function () {
     // if (rootContainer.querySelector(".vse-container") !== null) return
     if (params.question_notation_list != undefined) {
       for (var i = 0; i < params.question_notation_list.length; i++) {
-        var $vseChoice = document.createElement("div")
-        $vseChoice.setAttribute("id", 'vseChoice' + this.generateUID())
+        var $vseQuestion = document.createElement("div")
+        $vseQuestion.setAttribute("id", 'vseChoice' + this.generateUID())
+        $vseQuestion.classList.add("notation")
         var svgout = new DOMParser().parseFromString(sanitizeXMLString(params.question_notation_list[i].notationWidget), "text/html").body.firstChild
         svgout.querySelectorAll("#manipulatorCanvas, #scoreRects, #labelCanvas, #phantomCanvas").forEach(c => c.remove())
         svgout.querySelectorAll(".marked, .lastAdded").forEach(m => {
           m.classList.remove("marked")
           m.classList.remove("lastAdded")
         })
-        svgout.querySelectorAll("svg").forEach(svg => svg.style.transform = "scale(2.5)")
-        $vseChoice.append(svgout)
-        question_container.appendChild($vseChoice)
+        //svgout.querySelectorAll("svg").forEach(svg => svg.style.transform = "scale(2.5)")
+        $vseQuestion.append(svgout)
+        question_container.appendChild($vseQuestion)
       }
     }
 
@@ -1218,6 +1221,7 @@ const MCS4L = (function () {
           var uuid = this.generateUID()
           var $vseAnswer = document.createElement("div")
           $vseAnswer.setAttribute("id", 'vseAnswer' + uuid)
+          $vseAnswer.classList.add("notation")
           var answerContainer = rootContainer.querySelector(".h5p-alternative-container[answer-id='" + i.toString() + "'")
           var svgout = new DOMParser().parseFromString(sanitizeXMLString(params.answers[i].answer_notation.notationWidget), "text/html").body.firstChild
           svgout.querySelectorAll("#manipulatorCanvas, #scoreRects, #labelCanvas, #phantomCanvas").forEach(c => c.remove())
@@ -1225,7 +1229,7 @@ const MCS4L = (function () {
             m.classList.remove("marked")
             m.classList.remove("lastAdded")
           })
-          svgout.querySelectorAll("svg").forEach(svg => svg.style.transform = "scale(2.5)")
+          //svgout.querySelectorAll("svg").forEach(svg => svg.style.transform = "scale(2.5)")
           $vseAnswer.append(svgout)
           answerContainer.appendChild($vseAnswer)
 
@@ -1239,25 +1243,25 @@ const MCS4L = (function () {
   /**
      * Adjust sizes according to definition-scale height of contents when all necessary containers are loaded.
      */
-  MultiChoiceScore4LMS.prototype.adjustFrameResponsive = function (vseContainer) {
+  MultiChoiceScore4LMS.prototype.adjustFrame = function (vseContainer) {
 
-    var defScale = vseContainer.querySelector("#rootSVG .definition-scale")
-    var dsHeight
-    if (defScale !== null) {
-      dsHeight = defScale.getBoundingClientRect().height * 2.5
-      dsHeight = dsHeight.toString() + "px"
+    var containerSVG = vseContainer.querySelector("#vrvSVG") //("#rootSVG .definition-scale")
+    var containerHeight
+    if (containerSVG !== null) {
+      containerHeight = containerSVG.getBoundingClientRect().height * 1.1
+      containerHeight = containerHeight.toString() + "px"
     }
-    vseContainer.style.height = dsHeight || "20rem"
-
-    var h5pContainer = vseContainer.parentElement //document.querySelector(".h5p-vse-container")
-    var showChildren = h5pContainer.querySelectorAll(".vse-container")
-    var h5pContainerHeight = 0
-    showChildren.forEach(sc => {
-      h5pContainerHeight += sc.getBoundingClientRect().height
-      sc.style.position = "relative" // very important, so that the containers are displayed in the same column
-    })
-    h5pContainer.style.height = h5pContainerHeight.toString() + "px"
-    window.frameElement.style.height = (parseFloat(window.frameElement.style.height) + h5pContainerHeight / 1).toString() + "px"
+    vseContainer.style.height = containerHeight || "20rem"
+    
+    // var h5pContainer = vseContainer.parentElement //document.querySelector(".h5p-vse-container")
+    // var showChildren = h5pContainer.querySelectorAll(".vse-container")
+    // var h5pContainerHeight = parseFloat(h5pContainer.style.heigth) || 0
+    // showChildren.forEach(sc => {
+    //   h5pContainerHeight += sc.getBoundingClientRect().height
+    //   sc.style.position = "relative" // very important, so that the containers are displayed in the same column
+    // })
+    // h5pContainer.style.height = h5pContainerHeight.toString() + "px"
+    // window.frameElement.style.height = (parseFloat(window.frameElement.style.height) + h5pContainerHeight / 1).toString() + "px"
   }
 
   /**
