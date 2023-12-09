@@ -1,6 +1,6 @@
-import "../css/multichoice.css"
-import MCS4L from "../js/multichoice.js"
+import "../css/musicnotation-multichoice.css"
+import MNMC from "../js/musicnotation-multichoice.js"
 
 // Load library
 H5P = H5P || {};
-H5P.MultiChoiceScore4LMS = MCS4L;
+H5P.MusicNotationMultiChoice = MNMC;

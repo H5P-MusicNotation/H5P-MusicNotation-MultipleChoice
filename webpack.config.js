@@ -10,7 +10,7 @@ var config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'multichoice.js'
+    filename: 'musicnotation-multichoice.js'
   },
   module: {
     rules: [
@@ -42,7 +42,7 @@ var config = {
   ,
   plugins: [
     new MiniCssExtractPlugin({
-    filename: "multichoice.css"
+    filename: "musicnotation-multichoice.css"
       })
     ]
 };

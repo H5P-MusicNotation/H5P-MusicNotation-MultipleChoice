@@ -183,14 +183,14 @@
         },
         {
           "label": "Aktivnost oceni kot celoto",
-          "description": "Aktivnost se oceni z 1 točko kot celota. Nastavitev je smiselna predvsem ob tipu vprašanja z več možnimi odgovori (Checkboxes)."
+          "description": "Aktivnost se oceni z 1 točko kot celota. Nastavitev je smiselna predvibem ob tipu vprašanja z več možnimi odgovori (Checkboxes)."
         },
         {
           "label": "Premešaj odgovore",
           "description": "Naključen prikaz odgovorov."
         },
         {
-          "label": "Pred ogledom rešitve je potrebno podati vse odgovore"
+          "label": "Pred ogledom rešitve je potrebno podati vibe odgovore"
         },
         {
           "label": "Pred zaključkom aktivnosti zahtevaj potrditev"
