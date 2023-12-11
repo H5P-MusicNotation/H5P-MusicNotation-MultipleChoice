@@ -109,6 +109,7 @@
           "importance": "medium",
           "widget": "html",
           "label": "Text",
+          "optional": true,
           "tags": [
             "strong",
             "em",

@@ -1207,6 +1207,7 @@ const MNMC = (function () {
         $vibeQuestion.classList.add("notation")
         var svgout = new DOMParser().parseFromString(sanitizeXMLString(params.question_notation_list[i].notationWidget), "text/html").body.firstChild
         svgout.querySelectorAll("#manipulatorCanvas, #scoreRects, #labelCanvas, #phantomCanvas").forEach(c => c.remove())
+        svgout = svgout.querySelector("#svgContainer")
         svgout.querySelectorAll(".marked, .lastAdded").forEach(m => {
           m.classList.remove("marked")
           m.classList.remove("lastAdded")
@@ -1227,6 +1228,7 @@ const MNMC = (function () {
           var answerContainer = rootContainer.querySelector(".h5p-alternative-container[answer-id='" + i.toString() + "'")
           var svgout = new DOMParser().parseFromString(sanitizeXMLString(params.answers[i].answer_notation.notationWidget), "text/html").body.firstChild
           svgout.querySelectorAll("#manipulatorCanvas, #scoreRects, #labelCanvas, #phantomCanvas").forEach(c => c.remove())
+          svgout = svgout.querySelector("#svgContainer")
           svgout.querySelectorAll(".marked, .lastAdded").forEach(m => {
             m.classList.remove("marked")
             m.classList.remove("lastAdded")
