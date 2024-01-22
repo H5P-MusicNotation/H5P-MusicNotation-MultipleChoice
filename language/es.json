@@ -1,46 +1,131 @@
 {
   "semantics": [
     {
-      "label": "Medio",
+      "label": "Medios de comunicaci\u00f3n",
       "fields": [
         {
           "label": "Tipo",
-          "description": "Medio opcional a mostrar arriba de la pregunta."
+          "options": [
+            "H5P.Image 1.1",
+            "H5P.Video 1.6",
+            "H5P.Audio 1.5"
+          ],
+          "description": "Medio opcional para mostrar encima de la pregunta."
         },
         {
-          "label": "Deshabilitar acercamiento de imagen"
+          "label": "Desactivar el zoom de la imagen",
+          "default": false,
+          "showWhen": {
+            "rules": [
+              {
+                "field": "type"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "label": "Pregunta"
+      "label": "Pregunta",
+      "tags": [
+        "strong",
+        "em",
+        "sub",
+        "sup",
+        "h2",
+        "h3",
+        "pre",
+        "code"
+      ]
+    },
+    {
+      "label": "Notaci\u00f3n",
+      "entity": "notation",
+      "field": {
+        "label": "Notaci\u00f3n",
+        "fields": [
+          {
+            "description": "A\u00f1adir notaci\u00f3n",
+            "default": "Notation"
+          },
+          {
+            "label": "Notaci\u00f3n interactiva",
+            "description": "Cuando la casilla de verificaci\u00f3n est\u00e1 marcada, la notaci\u00f3n ser\u00e1 interactiva en la vista de contenido, de lo contrario s\u00f3lo se utilizar\u00e1 el SVG.",
+            "default": false
+          }
+        ]
+      }
     },
     {
       "label": "Opciones disponibles",
-      "entity": "opción",
+      "entity": "option",
       "field": {
-        "label": "Opción",
+        "label": "Opci\u00f3n",
         "fields": [
           {
-            "label": "Texto"
+            "label": "Texto",
+            "tags": [
+              "strong",
+              "em",
+              "sub",
+              "sup",
+              "code"
+            ]
+          },
+          {
+            "label": "Notaci\u00f3n",
+            "fields": [
+              {
+                "description": "A\u00f1adir notaci\u00f3n"
+              },
+              {
+                "label": "Notaci\u00f3n interactiva",
+                "description": "Cuando la casilla de verificaci\u00f3n est\u00e1 marcada, la notaci\u00f3n ser\u00e1 interactiva en la vista de contenido, de lo contrario s\u00f3lo se utilizar\u00e1 el SVG.",
+                "default": false
+              }
+            ]
           },
           {
             "label": "Correcto"
           },
           {
-            "label": "Pistas y retroalimentación",
+            "label": "Consejos y comentarios",
             "fields": [
               {
-                "label": "Texto de pista",
-                "description": "Pista para el usuario. Esto aparecerá antes de que el usuario compruebe su respuesta/respuestas."
+                "label": "Texto del consejo",
+                "description": "Pista para el usuario. Aparecer\u00e1 antes de que el usuario compruebe su respuesta o respuestas.",
+                "tags": [
+                  "p",
+                  "br",
+                  "strong",
+                  "em",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Mensaje que se muestra si se selecciona una respuesta",
-                "description": "El mensaje aparecerá debajo de la respuesta al \"comprobar\" si esta respuesta es seleccionada."
+                "label": "Mensaje que aparece si se selecciona la respuesta",
+                "description": "Aparecer\u00e1 un mensaje debajo de la respuesta en \"check\" si se selecciona esta respuesta.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Mensaje mostrado si la respuesta no es seleccionada",
-                "description": "El mensaje aparecerá debajo de la respuesta al \"comprobar\" si esta respuesta no está seleccionada."
+                "label": "Mensaje que aparece si no se selecciona la respuesta",
+                "description": "Aparecer\u00e1 un mensaje debajo de la respuesta en \"check\" si esta respuesta no est\u00e1 seleccionada.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               }
             ]
           }
@@ -48,26 +133,29 @@
       }
     },
     {
-      "label": "Retroalimentación Global",
+      "label": "Comentarios generales",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Predeterminado"
+              "label": "Por defecto"
             }
           ],
-          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
-          "description": "Haga clic en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
-          "entity": "rango",
+          "label": "Defina comentarios personalizados para cualquier rango de puntuaci\u00f3n",
+          "description": "Haga clic en el bot\u00f3n \"A\u00f1adir rango\" para a\u00f1adir tantos rangos como necesite. Ejemplo: 0-20% Mala puntuaci\u00f3n, 21-91% Puntuaci\u00f3n media, 91-100% \u00a1Gran puntuaci\u00f3n!",
+          "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Rango del Puntaje"
+                "label": "Rango de puntuaci\u00f3n",
+                "default": 0
               },
-              {},
               {
-                "label": "Retroalimentación para rango de puntaje definido",
-                "placeholder": "Complete la retroalimentación"
+                "default": 100
+              },
+              {
+                "label": "Retroalimentaci\u00f3n para el rango de puntuaci\u00f3n definido",
+                "placeholder": "Rellene los comentarios"
               }
             ]
           }
@@ -75,182 +163,208 @@
       ]
     },
     {
-      "label": "Traducciones de interfaz de usuario para opción múltiple",
+      "label": "Traducciones de la interfaz de usuario para multielecci\u00f3n",
       "fields": [
         {
-          "label": "Etiqueta del botón Comprobar respuesta",
-          "default": "Comprobar"
+          "label": "Comprobar la etiqueta del bot\u00f3n de respuesta",
+          "default": "Check"
         },
         {
-          "label": "Etiqueta para botón enviar respuesta",
+          "label": "Etiqueta del bot\u00f3n Enviar respuesta",
           "default": "Submit"
         },
         {
-          "label": "Texto del botón de solución",
-          "default": "Mostrar solución"
+          "label": "Mostrar etiqueta del bot\u00f3n de soluci\u00f3n",
+          "default": "Show solution"
         },
         {
-          "label": "Etiqueta del botón Reintentar",
-          "default": "Reintentar"
+          "label": "Etiqueta del bot\u00f3n Reintentar",
+          "default": "Retry"
         },
         {
-          "label": "Etiqueta de la pista",
-          "default": "Mostrar pista"
+          "label": "Etiqueta",
+          "default": "Show tip"
         },
         {
-          "label": "Representación textual de la barra de puntaje para aquellos que usan un lector de texto en voz alta",
+          "label": "Representaci\u00f3n textual de la barra de puntuaci\u00f3n para quienes utilicen un readspeaker",
           "description": "Las variables disponibles son :num y :total",
-          "default": "Obtuvo :num de un total de :total puntos"
+          "default": "You got :num out of :total points"
         },
         {
-          "label": "Pista Disponible (no se muestra)",
-          "default": "Pista disponible",
-          "description": "Texto de accesibilidad utilizado para lectores de texto en voz alta"
+          "label": "Sugerencia disponible (no se muestra)",
+          "default": "Tip available",
+          "description": "Texto de accesibilidad utilizado para los lectohablantes"
         },
         {
-          "label": "Retroalimentación Disponible (no se muestra)",
-          "default": "Retroalimentación disponible",
-          "description": "Texto de accesibilidad utilizado para los lectores de texto en voz alta"
+          "label": "Comentarios disponibles (no se muestran)",
+          "default": "Feedback available",
+          "description": "Texto de accesibilidad utilizado para los lectohablantes"
         },
         {
-          "label": "Leer Retroalimentación (no se muestra)",
-          "default": "Leer retroalimentación",
-          "description": "Texto de accesibilidad utilizado para los lectores en voz alta"
+          "label": "Leer comentarios (no se muestran)",
+          "default": "Read feedback",
+          "description": "Texto de accesibilidad utilizado para los lectohablantes"
         },
         {
-          "label": "Respuesta Incorrecta (no se muestra)",
-          "default": "Respuesta incorrecta",
-          "description": "Texto de accesibilidad utilizado para los lectores en voz alta"
+          "label": "Respuesta incorrecta (no se muestra)",
+          "default": "Wrong answer",
+          "description": "Texto de accesibilidad utilizado para los lectohablantes"
         },
         {
-          "label": "Respuesta Correcta (no se muestra)",
-          "default": "Respuesta correcta",
-          "description": "Texto de accesibilidad utilizado para los lectores en voz alta"
+          "label": "Respuesta correcta (no se muestra)",
+          "default": "Correct answer",
+          "description": "Texto de accesibilidad utilizado para los lectohablantes"
         },
         {
-          "label": "La opción debería haber sido seleccionada",
-          "default": "Debería haber sido seleccionada"
+          "label": "Se deber\u00eda haber marcado la opci\u00f3n",
+          "default": "Should have been checked"
         },
         {
-          "label": "La opción no debería haber sido seleccionada",
-          "default": "No debería haber sido seleccionada"
+          "label": "Opci\u00f3n no marcada",
+          "default": "Should not have been checked"
         },
         {
-          "label": "Texto para mensaje \"Requiere respuesta\"",
-          "default": "Por favor responda antes de ver la solución"
+          "label": "Texto para el mensaje \"Requiere respuesta",
+          "default": "Please answer before viewing the solution"
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Comprobar\"",
-          "default": "Comprobar las respuestas. Las respuestas serán marcadas como correcta, incorrecta o sin contestar."
+          "label": "Descripci\u00f3n de la tecnolog\u00eda de asistencia para el bot\u00f3n \"Comprobar",
+          "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Mostrar Solución\"",
-          "default": "Mostrar la solución. El trabajo será calificado con su solución correcta."
+          "label": "Descripci\u00f3n de la tecnolog\u00eda de asistencia para el bot\u00f3n \"Mostrar soluci\u00f3n\".",
+          "default": "Show the solution. The task will be marked with its correct solution."
         },
         {
-          "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
-          "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+          "label": "Descripci\u00f3n de la tecnolog\u00eda de asistencia para el bot\u00f3n \"Reintentar\".",
+          "default": "Retry the task. Reset all responses and start the task over again."
         }
       ]
     },
     {
-      "label": "Configuraciones del comportamiento",
-      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "label": "Entornos conductuales",
+      "description": "Estas opciones le permitir\u00e1n controlar el comportamiento de la tarea.",
       "fields": [
         {
-          "label": "Habilitar botón \"Reintentar\""
+          "label": "Activar el bot\u00f3n \"Reintentar",
+          "default": true
         },
         {
-          "label": "Habilitar botón \"Reintentar\""
+          "label": "Activar el bot\u00f3n \"Mostrar soluci\u00f3n",
+          "default": true
         },
         {
-          "label": "Habilitar botón \"Comprobar\""
+          "label": "Activar el bot\u00f3n \"Comprobar",
+          "default": true
         },
         {
           "label": "Tipo de pregunta",
-          "description": "Seleccione el aspecto y comportamiento de la pregunta.",
+          "description": "Seleccione el aspecto y el comportamiento de la pregunta.",
+          "default": "auto",
           "options": [
             {
-              "label": "Automático"
+              "label": "Autom\u00e1tico"
             },
             {
-              "label": "Opción múltiple (casillas de verificación)"
+              "label": "Selecci\u00f3n m\u00faltiple (casillas de verificaci\u00f3n)"
             },
             {
-              "label": "Selección Única (Botones)"
+              "label": "Una sola opci\u00f3n (botones de radio)"
             }
           ]
         },
         {
-          "label": "Dar un punto para todo el trabajo",
-          "description": "Habilite para dar un total de un punto para múltiples respuestas correctas. Esta no será una opción en el modo \"Respuesta única\"."
+          "label": "Dar un punto por toda la tarea",
+          "description": "Habilitar para dar un total de un punto por m\u00faltiples respuestas correctas. Esto no ser\u00e1 una opci\u00f3n en el modo \"Respuesta \u00fanica\".",
+          "default": false
         },
         {
-          "label": "Aleatorizar respuestas",
-          "description": "Habilitar para aleatorizar el orden de las respuestas en pantalla."
+          "label": "Respuestas aleatorias",
+          "description": "Permite aleatorizar el orden de las respuestas en pantalla.",
+          "default": true
         },
         {
-          "label": "Requerir respuesta antes de que se pueda ver la solución"
+          "label": "Se requiere respuesta antes de poder ver la soluci\u00f3n",
+          "default": true
         },
         {
-          "label": "Mostrar diálogo de confirmación en \"Comprobar\""
+          "label": "Mostrar di\u00e1logo de confirmaci\u00f3n en \"Comprobar\"",
+          "default": false
         },
         {
-          "label": "Mostrar diálogo de confirmación en \"Comprobar\""
+          "label": "Mostrar di\u00e1logo de confirmaci\u00f3n en \"Reintentar\"",
+          "default": false
         },
         {
-          "label": "Verificar automáticamente las respuestas",
-          "description": "Al activar esta opción, se verá afectada la accesibilidad, asegúrese de saber lo que está haciendo."
+          "label": "Comprobar respuestas autom\u00e1ticamente",
+          "default": false,
+          "description": "Activar esta opci\u00f3n har\u00e1 que la accesibilidad se resienta, aseg\u00farate de que sabes lo que est\u00e1s haciendo."
         },
         {
-          "label": "Porcentaje aprobatorio",
-          "description": "Esta configuración a menudo no tendrá ningún efecto. Es el porcentaje del puntaje total requerido para obtener 1 punto cuando se habilita un punto para toda la tarea, y para obtener un result.success en las declaraciones xAPI."
+          "label": "Porcentaje de aprobados",
+          "description": "Este ajuste no suele tener ning\u00fan efecto. Es el porcentaje de la puntuaci\u00f3n total necesaria para obtener 1 punto cuando se habilita un punto para toda la tarea, y para obtener result.success en las sentencias xAPI.",
+          "default": 100
         },
         {
-          "label": "Mostrar puntaje",
-          "description": "Mostrar los puntos obtenidos por cada respuesta. Esto no será una opción en el modo 'Respuesta única' o si estuviera habilitada la opción de 'Dar un punto para el trabajo completo'."
+          "label": "Mostrar puntos de puntuaci\u00f3n",
+          "description": "Mostrar los puntos obtenidos por cada respuesta. Esto no ser\u00e1 una opci\u00f3n en el modo 'Respuesta \u00fanica' o si la opci\u00f3n 'Dar un punto por toda la tarea' est\u00e1 activada.",
+          "default": true
         }
       ]
     },
     {
-      "label": "Diálogo de confirmación para Comprobar",
+      "label": "Comprobar el di\u00e1logo de confirmaci\u00f3n",
       "fields": [
         {
           "label": "Texto de cabecera",
-          "default": "¿Terminar?"
+          "default": "Finish ?"
         },
         {
-          "label": "Texto del cuerpo",
-          "default": "¿Está seguro que desea terminar ?"
+          "label": "Cuerpo del texto",
+          "default": "Are you sure you wish to finish ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Texto del botón Cancelar",
-          "default": "Cancelar"
+          "label": "Etiqueta del bot\u00f3n Cancelar",
+          "default": "Cancel"
         },
         {
-          "label": "Texto del botón Confirmar",
-          "default": "Terminar"
+          "label": "Etiqueta del bot\u00f3n de confirmaci\u00f3n",
+          "default": "Finish"
         }
       ]
     },
     {
-      "label": "Diálogo de confirmación de Reintentar",
+      "label": "Di\u00e1logo de confirmaci\u00f3n de reintento",
       "fields": [
         {
           "label": "Texto de cabecera",
-          "default": "¿Reintentar?"
+          "default": "Retry ?"
         },
         {
-          "label": "Texto del cuerpo",
-          "default": "¿Está seguro de que desea volver a intentarlo?"
+          "label": "Cuerpo del texto",
+          "default": "Are you sure you wish to retry ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Texto del botón Cancelar",
-          "default": "Cancelar"
+          "label": "Etiqueta del bot\u00f3n Cancelar",
+          "default": "Cancel"
         },
         {
-          "label": "Texto del botón Confirmar",
-          "default": "Confirmar"
+          "label": "Etiqueta del bot\u00f3n de confirmaci\u00f3n",
+          "default": "Confirm"
         }
       ]
     }

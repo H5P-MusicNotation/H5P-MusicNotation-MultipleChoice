@@ -1,46 +1,131 @@
 {
   "semantics": [
     {
+      "label": "Mediji",
       "fields": [
         {
           "label": "Tips",
-          "description": "Papildu multimedijs, kuru atspoguļot virs jautājuma."
+          "options": [
+            "H5P.Image 1.1",
+            "H5P.Video 1.6",
+            "H5P.Audio 1.5"
+          ],
+          "description": "Neoblig\u0101ts multivides l\u012bdzeklis, kas tiek r\u0101d\u012bts virs jaut\u0101juma."
         },
         {
-          "label": "Atspējot attēla tālummaiņu"
+          "label": "Att\u0113la t\u0101lummai\u0146as atsp\u0113jo\u0161ana",
+          "default": false,
+          "showWhen": {
+            "rules": [
+              {
+                "field": "type"
+              }
+            ]
+          }
         }
-      ],
-      "label": "Multivide"
+      ]
     },
     {
-      "label": "Jautājums"
+      "label": "Jaut\u0101jums",
+      "tags": [
+        "strong",
+        "em",
+        "sub",
+        "sup",
+        "h2",
+        "h3",
+        "pre",
+        "code"
+      ]
     },
     {
-      "label": "Pieejamās izvēles",
-      "entity": "izvēle",
+      "label": "Pieraksts",
+      "entity": "notation",
       "field": {
-        "label": "Izvēle",
+        "label": "Pieraksts",
         "fields": [
           {
-            "label": "Teksts"
+            "description": "Pievienot pierakstu",
+            "default": "Notation"
+          },
+          {
+            "label": "Interakt\u012bv\u0101 not\u0101cija",
+            "description": "Ja izv\u0113les r\u016bti\u0146a ir atz\u012bm\u0113ta, not\u0101cija b\u016bs interakt\u012bva satura skat\u0101, pret\u0113j\u0101 gad\u012bjum\u0101 tiks izmantots tikai SVG.",
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "label": "Pieejam\u0101s opcijas",
+      "entity": "option",
+      "field": {
+        "label": "Iesp\u0113ja",
+        "fields": [
+          {
+            "label": "Teksts",
+            "tags": [
+              "strong",
+              "em",
+              "sub",
+              "sup",
+              "code"
+            ]
+          },
+          {
+            "label": "Pieraksts",
+            "fields": [
+              {
+                "description": "Pievienot pierakstu"
+              },
+              {
+                "label": "Interakt\u012bv\u0101 not\u0101cija",
+                "description": "Ja izv\u0113les r\u016bti\u0146a ir atz\u012bm\u0113ta, not\u0101cija b\u016bs interakt\u012bva satura skat\u0101, pret\u0113j\u0101 gad\u012bjum\u0101 tiks izmantots tikai SVG.",
+                "default": false
+              }
+            ]
           },
           {
             "label": "Pareizi"
           },
           {
-            "label": "Padomi un atgriezeniskā saite",
+            "label": "Padomi un atsauksmes",
             "fields": [
               {
                 "label": "Padoma teksts",
-                "description": "Padoms lietotājam. Tas parādīsies, pirms lietotājs pārbaudīs savu atbildi/atbildes."
+                "description": "Padoms lietot\u0101jam. Tas par\u0101d\u012bsies, pirms lietot\u0101js p\u0101rbauda savu atbildi/atbildes.",
+                "tags": [
+                  "p",
+                  "br",
+                  "strong",
+                  "em",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Ziņa, kas tiek parādīta ja atbilde izvēlēta",
-                "description": "Ziņa, kas tiks parādīta zem atbildes pie \"Pārbaudīt\", ja šī atbilde ir izvēlēta."
+                "label": "Ja ir izv\u0113l\u0113ta atbilde, tiek par\u0101d\u012bts zi\u0146ojums",
+                "description": "Ja \u0161\u012b atbilde ir izv\u0113l\u0113ta, zem atbildes \"p\u0101rbaud\u012bt\" par\u0101d\u012bsies zi\u0146ojums.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Ziņa, kas tiek parādīta ja atbilde nav izvēlēta",
-                "description": "Ziņa, kas tiks parādīta zem atbildes pie \"Pārbaudīt\", ja šī atbilde nav izvēlēta."
+                "label": "Ja nav izv\u0113l\u0113ta atbilde, tiek par\u0101d\u012bts zi\u0146ojums",
+                "description": "Ja \u0161\u012b atbilde nav izv\u0113l\u0113ta, zem atbildes \"p\u0101rbaud\u012bt\" par\u0101d\u012bsies zi\u0146ojums.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               }
             ]
           }
@@ -48,209 +133,238 @@
       }
     },
     {
-      "label": "Kopējā atgriezeniskā saite",
+      "label": "Visp\u0101r\u0113j\u0101s atsauksmes",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Pēc noklusējuma"
+              "label": "Noklus\u0113juma"
             }
           ],
-          "entity": "diapazons",
+          "label": "Defin\u0113jiet piel\u0101gotu atgriezenisko saiti jebkuram rezult\u0101tu diapazonam",
+          "description": "Noklik\u0161\u0137iniet uz pogas \"Pievienot diapazonu\", lai pievienotu tik diapazonu, cik nepiecie\u0161ams. Piem\u0113rs: 0-20% slikts rezult\u0101ts, 21-91% vid\u0113js rezult\u0101ts, 91-100% lielisks rezult\u0101ts!",
+          "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Rezultātu diapazons"
+                "label": "Rezult\u0101tu diapazons",
+                "default": 0
               },
-              {},
               {
-                "label": "Norādītā diapazona atgriezeniskā saite",
+                "default": 100
+              },
+              {
+                "label": "Atsauksmes par noteiktu rezult\u0101tu diapazonu",
                 "placeholder": "Aizpildiet atgriezenisko saiti"
               }
             ]
-          },
-          "label": "Iestatiet pielāgotu atgriezenisko saiti katram rezultātu diapazonam",
-          "description": "Klikšķiniet pogu \"Pievienot diapazonu\", lai pievienotu tik diapazonus cik vēlaties. Piemēram, 0-20% Slikts rezultāts, 21-91% Viduvējs rezultāts, 91-100% Lielisks rezultāts!"
+          }
         }
       ]
     },
     {
-      "label": "Lietotāja saskarnes tulkojumi vairāku atbilžu pārbaudījumam",
+      "label": "Lietot\u0101ja interfeisa tulkojumi daudzizv\u0113\u013cu izv\u0113lei",
       "fields": [
         {
-          "label": "Atbilžu pārbaudes pogas etiķete",
-          "default": "Pārbaudīt"
+          "label": "P\u0101rbaudiet atbildes pogas eti\u0137eti",
+          "default": "Check"
         },
         {
-          "label": "Atbildes iesniegšanas pogas etiķete",
-          "default": "Iesniegt"
+          "label": "Atbildes pogas \"Iesniegt atbildi\" eti\u0137ete",
+          "default": "Submit"
         },
         {
-          "label": "Rādīt risinājumu pogas etiķete",
-          "default": "Rādīt risinājumu"
+          "label": "R\u0101d\u012bt risin\u0101juma pogas eti\u0137eti",
+          "default": "Show solution"
         },
         {
-          "label": "Mēģināt vēlreiz pogas etiķete",
-          "default": "Mēģināt vēlreiz"
+          "label": "Atk\u0101rtot pogas eti\u0137ete",
+          "default": "Retry"
         },
         {
-          "label": "Padoma etiķete",
-          "default": "Parādīt padomu"
+          "label": "Padomu eti\u0137ete",
+          "default": "Show tip"
         },
         {
-          "label": "Rezultātu skalas tekstuālais atspoguļojums tiem, kas izmanto asistīvās tehnoloģijas",
-          "description": "Pieejamie mainīgie ir :num un :total",
-          "default": "Tu saņēmi :num no :total punktiem"
+          "label": "Rezult\u0101tu joslas teksta att\u0113lojums tiem, kas izmanto nolas\u012bt\u0101ju.",
+          "description": "Pieejamie main\u012bgie ir :num un :total",
+          "default": "You got :num out of :total points"
         },
         {
-          "label": "Pieejams padoms (netiek rādīts)",
-          "default": "Pieejams padoms",
-          "description": "Pieejamības teksts, ko izmanto asistīvās tehnoloģijas"
+          "label": "Pieejami padomi (netiek r\u0101d\u012bti)",
+          "default": "Tip available",
+          "description": "Pieejam\u012bbas teksts, ko izmanto las\u012bt\u0101jiem"
         },
         {
-          "label": "Pieejama atgriezeniskā saite (netiek rādīts)",
-          "default": "Pieejama atgriezeniskā saite",
-          "description": "Pieejamības teksts, ko izmanto asistīvās tehnoloģijas"
+          "label": "Pieejamas atsauksmes (netiek r\u0101d\u012btas)",
+          "default": "Feedback available",
+          "description": "Pieejam\u012bbas teksts, ko izmanto las\u012bt\u0101jiem"
         },
         {
-          "label": "Lasīt atgriezenisko saiti (netiek rādīts)",
-          "default": "Lasīt atgriezenisko saiti",
-          "description": "Pieejamības teksts, ko izmanto asistīvās tehnoloģijas"
+          "label": "Las\u012bt atsauksmes (netiek r\u0101d\u012btas)",
+          "default": "Read feedback",
+          "description": "Pieejam\u012bbas teksts, ko izmanto las\u012bt\u0101jiem"
         },
         {
-          "label": "Nepareiza atbilde (netiek rādīts)",
-          "default": "Nepareiza atbilde",
-          "description": "Pieejamības teksts, ko izmanto asistīvās tehnoloģijas"
+          "label": "Nepareiza atbilde (netiek r\u0101d\u012bta)",
+          "default": "Wrong answer",
+          "description": "Pieejam\u012bbas teksts, ko izmanto las\u012bt\u0101jiem"
         },
         {
-          "label": "Pareiza atbilde (netiek rādīts)",
-          "default": "Pareiza atbilde",
-          "description": "Pieejamības teksts, ko izmanto asistīvās tehnoloģijas"
+          "label": "Pareiza atbilde (nav redzama)",
+          "default": "Correct answer",
+          "description": "Pieejam\u012bbas teksts, ko izmanto las\u012bt\u0101jiem"
         },
         {
-          "label": "Izvēli vajadzēja atzīmēt",
-          "default": "Vajadzēja atzīmēt"
+          "label": "Vajadz\u0113ja atz\u012bm\u0113t iesp\u0113ju",
+          "default": "Should have been checked"
         },
         {
-          "label": "Izvēli nevajadzēja atzīmēt",
-          "default": "Nevajadzēja atzīmēt"
+          "label": "Iesp\u0113ja nebija j\u0101atz\u012bm\u0113",
+          "default": "Should not have been checked"
         },
         {
-          "label": "Teksts ziņojumam “Nepieciešama atbilde”",
-          "default": "Lūdzu, atbildiet pirms risinājuma skatīšanas"
+          "label": "Zi\u0146ojuma \"Nepiecie\u0161ama atbilde\" teksts",
+          "default": "Please answer before viewing the solution"
         },
         {
-          "label": "Pogas \"Pārbaudīt\" apraksts asistīvajām tehnoloģijām",
-          "default": "Pārbaudīt atbildes. Sniegtās atbildes tiks atzīmētas kā pareizas, nepareizas, vai neatbildētas."
+          "label": "Pal\u012bdz\u012bg\u0101s tehnolo\u0123ijas apraksts pogai \"P\u0101rbaud\u012bt\"",
+          "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Pogas \"Rādīt risinājumu\" apraksts asistīvajām tehnoloģijām",
-          "default": "Rādīt risinājumu. Uzdevums tiks atzīmēts ar tā pareizo risinājumu."
+          "label": "Pal\u012bdz\u012bg\u0101s tehnolo\u0123ijas apraksts pogai \"R\u0101d\u012bt risin\u0101jumu\"",
+          "default": "Show the solution. The task will be marked with its correct solution."
         },
         {
-          "label": "Pogas \"Mēģināt vēlreiz\" apraksts priekš asistīvajām tehnoloģijām",
-          "default": "Mēģiniet uzdevumu vēlreiz. Dzēst visas iesniegtās atbildes un sākt uzdevumu no sākuma."
+          "label": "Pal\u012bdz\u012bg\u0101s tehnolo\u0123ijas apraksts pogai \"Atk\u0101rtot\"",
+          "default": "Retry the task. Reset all responses and start the task over again."
         }
       ]
     },
     {
+      "label": "Uzved\u012bbas iestat\u012bjumi",
+      "description": "\u0160\u012bs opcijas \u013cauj jums kontrol\u0113t uzdevuma darb\u012bbu.",
       "fields": [
         {
-          "label": "Atļaut pogu \"Mēģināt vēlreiz\""
+          "label": "Iesl\u0113gt pogu \"Atk\u0101rtot\"",
+          "default": true
         },
         {
-          "label": "Atļaut pogu \"Rādīt risinājumu\""
+          "label": "Iesl\u0113gt pogu \"R\u0101d\u012bt risin\u0101jumu\"",
+          "default": true
         },
         {
-          "label": "Atļaut pogu \"Pārbaudīt\""
+          "label": "Iesl\u0113gt pogu \"P\u0101rbaud\u012bt\"",
+          "default": true
         },
         {
-          "label": "Jautājuma veids",
+          "label": "Jaut\u0101juma veids",
+          "description": "Izv\u0113lieties jaut\u0101juma izskatu un uzved\u012bbu.",
+          "default": "auto",
           "options": [
             {
-              "label": "Automātiski"
+              "label": "Autom\u0101tiskais"
             },
             {
-              "label": "Vairākas izvēles iespējas (izvēles rūtiņas)"
+              "label": "Vair\u0101kk\u0101rt\u0113ja izv\u0113le (izv\u0113les r\u016bti\u0146as)"
             },
             {
-              "label": "Viena izvēle (radiopogas)"
+              "label": "Viena izv\u0113le (radio pogas)"
             }
-          ],
-          "description": "Izvēlieties jautājuma izskatu un uzvedību."
+          ]
         },
         {
-          "label": "Par visu uzdevumu piešķirt vienu punktu",
-          "description": "Iespējot, lai par vairākām pareizām atbildēm kopā piešķirtu vienu punktu. Režīmā \"Viena atbilde\" šī opcija nebūs pieejama."
+          "label": "Pie\u0161\u0137irt vienu punktu par visu uzdevumu",
+          "description": "Iesp\u0113ja pie\u0161\u0137irt vienu punktu par vair\u0101k\u0101m pareiz\u0101m atbild\u0113m. \u0160\u012b opcija neb\u016bs pieejama re\u017e\u012bm\u0101 \"Viena atbilde\".",
+          "default": false
         },
         {
-          "label": "Atbilžu variantus izkārtot jaukti",
-          "description": "Iespējot, lai nejauši sakārtotu redzamo atbilžu secību."
+          "label": "Atbildes izlases veid\u0101",
+          "description": "Iesp\u0113ja nejau\u0161in\u0101t r\u0101d\u012bto atbil\u017eu sec\u012bbas izk\u0101rtojumu.",
+          "default": true
         },
         {
-          "label": "Pieprasīt atbildi pirms atļauts skatīt risinājumu"
+          "label": "Nepiecie\u0161ama atbilde, pirms var apskat\u012bt risin\u0101jumu",
+          "default": true
         },
         {
-          "label": "Rādīt apstiprinājuma dialogu pēc \"Pārbaudīt\""
+          "label": "Par\u0101d\u012bt apstiprin\u0101juma dialoglodzi\u0146u \"P\u0101rbaud\u012bt\"",
+          "default": false
         },
         {
-          "label": "Rādīt apstiprinājuma dialogu pēc \"Mēģināt vēlreiz\""
+          "label": "Par\u0101d\u012bt apstiprin\u0101juma dialoglodzi\u0146u \"Atk\u0101rtot\"",
+          "default": false
         },
         {
-          "label": "Automātiski pārbaudīt atbildes",
-          "description": "Ja opcija iespējota, cietīs pieejamība. Pārliecinieties, ka zināt, ko darāt."
+          "label": "Autom\u0101tiski p\u0101rbaudiet atbildes",
+          "default": false,
+          "description": "Iesl\u0113dzot \u0161o opciju, ciet\u012bs pieejam\u012bba, t\u0101p\u0113c p\u0101rliecinieties, ka zin\u0101t, ko dar\u0101t."
         },
         {
-          "label": "Nokārtošanas procents",
-          "description": "Šim iestatījumam bieži nebūs nekādas ietekmes. Tā ir procentuālā daļa no kopējā rezultāta, kas nepieciešams, lai iegūtu 1 punktu, ja ir iespējota viena punkta piešķiršana par visu uzdevumu. Tiek izmantots arī lai iegūtu result.success xAPI ziņojumos."
+          "label": "Procentu\u0101lais v\u0113rt\u0113jums",
+          "description": "\u0160im iestat\u012bjumam bie\u017ei vien nav nek\u0101das ietekmes. Tas ir procentu\u0101l\u0101 da\u013ca no kop\u0113j\u0101 rezult\u0101ta, kas nepiecie\u0161ama 1 punkta ieg\u016b\u0161anai, ja ir iesp\u0113jots viens punkts par visu uzdevumu, un rezult\u0101ts.success ieg\u016b\u0161anai xAPI pazi\u0146ojumos.",
+          "default": 100
         },
         {
-          "label": "Rādīt punktus",
-          "description": "Rādīt par katru atbildi nopelnītos punktus. Šī opcija nebūs pieejama režīmā \"Viena atbilde\" vai tad, ja ir iespējota opcija \"Piešķirt vienu punktu par visu uzdevumu\"."
-        }
-      ],
-      "label": "Uzvedības iestatījumi",
-      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību."
-    },
-    {
-      "label": "Pārbaudīšanas apstiprinājuma dialogs",
-      "fields": [
-        {
-          "label": "Galvenes teksts",
-          "default": "Beigt?"
-        },
-        {
-          "label": "Pamatteksts",
-          "default": "Vai esat pārliecināts, ka vēlaties beigt ?"
-        },
-        {
-          "label": "Atcelšanas pogas etiķete",
-          "default": "Atcelt"
-        },
-        {
-          "label": "Apstiprinājuma pogas etiķete",
-          "default": "Beigt"
+          "label": "R\u0101d\u012bt rezult\u0101ta punktus",
+          "description": "Par katru atbildi nor\u0101diet ieg\u016btos punktus. \u0160\u012b opcija neb\u016bs pieejama re\u017e\u012bm\u0101 \"Viena atbilde\" vai ja ir iesp\u0113jota opcija \"Pie\u0161\u0137irt vienu punktu par visu uzdevumu\".",
+          "default": true
         }
       ]
     },
     {
-      "label": "Atkārtota mēģinājuma apstiprināšanas dialogs",
+      "label": "P\u0101rbaudiet apstiprin\u0101juma dialoglodzi\u0146u",
       "fields": [
         {
-          "label": "Galvenes teksts",
-          "default": "Mēģināt vēlreiz ?"
+          "label": "Virsraksta teksts",
+          "default": "Finish ?"
         },
         {
           "label": "Pamatteksts",
-          "default": "Esat pārliecināts, ka vēlaties mēģināt vēlreiz ?"
+          "default": "Are you sure you wish to finish ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Atcelšanas pogas etiķete",
-          "default": "Atcelt"
+          "label": "Atcelt pogas eti\u0137ete",
+          "default": "Cancel"
         },
         {
-          "label": "Apstiprinājuma pogas etiķete",
-          "default": "Apstiprināt"
+          "label": "Apstiprin\u0101t pogas eti\u0137eti",
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Atk\u0101rto\u0161anas apstiprin\u0101juma dialogs",
+      "fields": [
+        {
+          "label": "Virsraksta teksts",
+          "default": "Retry ?"
+        },
+        {
+          "label": "Pamatteksts",
+          "default": "Are you sure you wish to retry ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
+        },
+        {
+          "label": "Atcelt pogas eti\u0137ete",
+          "default": "Cancel"
+        },
+        {
+          "label": "Apstiprin\u0101t pogas eti\u0137eti",
+          "default": "Confirm"
         }
       ]
     }

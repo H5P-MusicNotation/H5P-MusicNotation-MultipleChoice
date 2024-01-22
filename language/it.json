@@ -5,24 +5,85 @@
       "fields": [
         {
           "label": "Tipo",
-          "description": "Media facoltativo da mostrare sopra la domanda"
+          "options": [
+            "H5P.Image 1.1",
+            "H5P.Video 1.6",
+            "H5P.Audio 1.5"
+          ],
+          "description": "Media opzionale da visualizzare sopra la domanda."
         },
         {
-          "label": "Disabilita lo zoom dell'immagine"
+          "label": "Disattivare lo zoom dell'immagine",
+          "default": false,
+          "showWhen": {
+            "rules": [
+              {
+                "field": "type"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "label": "Domanda"
+      "label": "Domanda",
+      "tags": [
+        "strong",
+        "em",
+        "sub",
+        "sup",
+        "h2",
+        "h3",
+        "pre",
+        "code"
+      ]
+    },
+    {
+      "label": "Notazione",
+      "entity": "notation",
+      "field": {
+        "label": "Notazione",
+        "fields": [
+          {
+            "description": "Aggiungi notazione",
+            "default": "Notation"
+          },
+          {
+            "label": "Notazione interattiva",
+            "description": "Se la casella di controllo \u00e8 contrassegnata, la notazione sar\u00e0 interattiva nella vista del contenuto, altrimenti verr\u00e0 utilizzato solo l'SVG.",
+            "default": false
+          }
+        ]
+      }
     },
     {
       "label": "Opzioni disponibili",
-      "entity": "opzione",
+      "entity": "option",
       "field": {
         "label": "Opzione",
         "fields": [
           {
-            "label": "Testo"
+            "label": "Testo",
+            "tags": [
+              "strong",
+              "em",
+              "sub",
+              "sup",
+              "code"
+            ]
+          },
+          {
+            "label": "Notazione",
+            "fields": [
+              {
+                "description": "Aggiungi notazione"
+              },
+              {
+                "label": "Notazione interattiva",
+                "description": "Se la casella di controllo \u00e8 contrassegnata, la notazione sar\u00e0 interattiva nella vista del contenuto, altrimenti verr\u00e0 utilizzato solo l'SVG.",
+                "default": false
+              }
+            ]
           },
           {
             "label": "Corretto"
@@ -32,15 +93,39 @@
             "fields": [
               {
                 "label": "Testo del suggerimento",
-                "description": "Suggerimento per l'utente. Apparirà prima l'utente verifichi le sue risposte."
+                "description": "Suggerimento per l'utente. Apparir\u00e0 prima che l'utente controlli le sue risposte.",
+                "tags": [
+                  "p",
+                  "br",
+                  "strong",
+                  "em",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Messaggio visualizzato se la risposta è selezionata",
-                "description": "Su \"Verifica\", apparirà un messaggio sotto la risposta se questa è selezionata"
+                "label": "Messaggio visualizzato se \u00e8 stata selezionata la risposta",
+                "description": "Il messaggio apparir\u00e0 sotto la risposta su \"check\" se questa risposta \u00e8 selezionata.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Messaggio visualizzato se la risposta non è selezionata",
-                "description": "Su \"Verifica\", apparirà un messaggio sotto la risposta se questa non è selezionata"
+                "label": "Messaggio visualizzato se la risposta non \u00e8 selezionata",
+                "description": "Se la risposta non \u00e8 selezionata, il messaggio appare sotto la risposta su \"check\".",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               }
             ]
           }
@@ -48,7 +133,7 @@
       }
     },
     {
-      "label": "Feedback generale",
+      "label": "Feedback complessivo",
       "fields": [
         {
           "widgets": [
@@ -56,18 +141,21 @@
               "label": "Predefinito"
             }
           ],
-          "label": "Definisci un feedback personalizzato per ogni intervallo di punteggio",
-          "description": "Clicca sul pulsante \"Aggiungi intervallo\" per aggiungere gli intervalli che ti servono. Per esempio: 0-20%, Punteggio scarso; 21-90%, Punteggio medio; 91-100% Punteggio ottimo!",
-          "entity": "Intervallo",
+          "label": "Definire un feedback personalizzato per qualsiasi intervallo di punteggio",
+          "description": "Fare clic sul pulsante \"Aggiungi intervallo\" per aggiungere tutti gli intervalli necessari. Esempio: 0-20% Punteggio negativo, 21-91% Punteggio medio, 91-100% Punteggio ottimo!",
+          "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Intervallo di punteggio"
+                "label": "Intervallo di punteggio",
+                "default": 0
               },
-              {},
+              {
+                "default": 100
+              },
               {
                 "label": "Feedback per un intervallo di punteggio definito",
-                "placeholder": "Compila il feedback"
+                "placeholder": "Compilare il feedback"
               }
             ]
           }
@@ -75,100 +163,104 @@
       ]
     },
     {
-      "label": "Traduzioni dell'interfaccia utente per scelta multipla",
+      "label": "Traduzioni dell'interfaccia utente per il multichoice",
       "fields": [
         {
-          "label": "Etichetta del pulsante \"Verifica risposta\"",
-          "default": "Verifica"
+          "label": "Controllare l'etichetta del pulsante di risposta",
+          "default": "Check"
         },
         {
-          "label": "Submit answer button label",
+          "label": "Etichetta del pulsante Invia risposta",
           "default": "Submit"
         },
         {
-          "label": "Etichetta del pulsante \"Mostra soluzione\"",
-          "default": "Mostra la soluzione"
+          "label": "Mostra l'etichetta del pulsante della soluzione",
+          "default": "Show solution"
         },
         {
-          "label": "Etichetta del pulsante \"Riprova\"",
-          "default": "Riprova"
+          "label": "Etichetta del pulsante Riprova",
+          "default": "Retry"
         },
         {
-          "label": "Etichetta del suggerimento",
-          "default": "Mostra suggerimento"
+          "label": "Etichetta di suggerimento",
+          "default": "Show tip"
         },
         {
-          "label": "Rappresentazione testuale sulla barra del punteggio per chi usa un lettore vocale",
+          "label": "Rappresentazione testuale della barra del punteggio per coloro che utilizzano un lettore di testo",
           "description": "Le variabili disponibili sono :num e :total",
-          "default": "Il tuo punteggio è :num su :total"
+          "default": "You got :num out of :total points"
         },
         {
           "label": "Suggerimento disponibile (non visualizzato)",
-          "default": "Suggerimento disponibile",
-          "description": "Testo di accessibilità per riproduttori vocali"
+          "default": "Tip available",
+          "description": "Testo di accessibilit\u00e0 utilizzato per i lettori"
         },
         {
           "label": "Feedback disponibile (non visualizzato)",
-          "default": "Feedback disponibile",
-          "description": "Testo di accessibilità utilizzato per riproduttori vocali"
+          "default": "Feedback available",
+          "description": "Testo di accessibilit\u00e0 utilizzato per i lettori"
         },
         {
           "label": "Leggi il feedback (non visualizzato)",
-          "default": "Leggi il feedback",
-          "description": "Testo di accessibilità utilizzato per riproduttori vocali"
+          "default": "Read feedback",
+          "description": "Testo di accessibilit\u00e0 utilizzato per i lettori"
         },
         {
-          "label": "Risposta sbagliata (non visualizzato)",
-          "default": "Risposta sbagliata",
-          "description": "Testo di accessibilità utilizzato per riproduttori vocali"
+          "label": "Risposta errata (non visualizzata)",
+          "default": "Wrong answer",
+          "description": "Testo di accessibilit\u00e0 utilizzato per i lettori"
         },
         {
-          "label": "Risposta corretta (non visualizzato)",
-          "default": "Risposta corretta",
-          "description": "Testo di accessibilità utilizzato per riproduttori vocali"
+          "label": "Risposta corretta (non visualizzata)",
+          "default": "Correct answer",
+          "description": "Testo di accessibilit\u00e0 utilizzato per i lettori"
         },
         {
-          "label": "L'opzione avrebbe dovuto essere verificata",
-          "default": "Avrebbe dovuto essere verificato"
+          "label": "L'opzione avrebbe dovuto essere selezionata",
+          "default": "Should have been checked"
         },
         {
-          "label": "L'opzione non avrebbe dovuto essere verificata",
-          "default": "Non avrebbe dovuto essere verificato"
+          "label": "L'opzione non deve essere selezionata",
+          "default": "Should not have been checked"
         },
         {
-          "label": "Testo per il messaggio \"Richiede una risposta\"",
-          "default": "Per favore rispondi prima di vedere la soluzione"
+          "label": "Testo per il messaggio \"Richiede risposta",
+          "default": "Please answer before viewing the solution"
         },
         {
-          "label": "Descrizione delle tecnologie assistive per il pulsante \"Verifica\"",
-          "default": "Verifica"
+          "label": "Descrizione della tecnologia assistiva per il pulsante \"Check",
+          "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Descrizione delle tecnologie assistive per il pulsante \"Mostra soluzione\"",
-          "default": "Mostra soluzione"
+          "label": "Descrizione della tecnologia assistiva per il pulsante \"Mostra soluzione\".",
+          "default": "Show the solution. The task will be marked with its correct solution."
         },
         {
-          "label": "Descrizione delle tecnologie assistive per il pulsante \"Riprova\"",
-          "default": "Riprova"
+          "label": "Descrizione delle tecnologie assistive per il pulsante \"Riprova",
+          "default": "Retry the task. Reset all responses and start the task over again."
         }
       ]
     },
     {
-      "label": "Impostazioni di esecuzione",
-      "description": "Queste opzioni permettono di controllare l'andamento del compito",
+      "label": "Impostazioni comportamentali",
+      "description": "Queste opzioni consentono di controllare il comportamento dell'attivit\u00e0.",
       "fields": [
         {
-          "label": "Attiva il pulsante Riprova"
+          "label": "Abilitare il pulsante \"Riprova",
+          "default": true
         },
         {
-          "label": "Attiva il pulsante Mostra soluzione"
+          "label": "Abilitare il pulsante \"Mostra soluzione",
+          "default": true
         },
         {
-          "label": "Attiva il pulsante \"Verifica\""
+          "label": "Abilitare il pulsante \"Controlla",
+          "default": true
         },
         {
           "label": "Tipo di domanda",
-          "description": "Seleziona l'aspetto e il comportamento della domanda.",
+          "description": "Selezionare l'aspetto e il comportamento della domanda.",
+          "default": "auto",
           "options": [
             {
               "label": "Automatico"
@@ -177,80 +269,102 @@
               "label": "Scelta multipla (caselle di controllo)"
             },
             {
-              "label": "Scelta singola (pulsanti di opzione)"
+              "label": "Scelta singola (pulsanti radio)"
             }
           ]
         },
         {
-          "label": "Assegna un punto per l'intero compito",
-          "description": "Attiva per assegnare un punto a risposte multiple corrette. Questa non è un'opzione in modalità \"Risposta singola\"."
+          "label": "Assegnare un punto per l'intero compito",
+          "description": "Consente di assegnare un totale di un punto per pi\u00f9 risposte corrette. Questa opzione non \u00e8 disponibile nella modalit\u00e0 \"Risposta singola\".",
+          "default": false
         },
         {
-          "label": "Risposte in ordine casuale",
-          "description": "Attiva per rendere casuale l'ordine delle domande visualizzate."
+          "label": "Randomizzare le risposte",
+          "description": "Consente di randomizzare l'ordine delle risposte visualizzate.",
+          "default": true
         },
         {
-          "label": "Richiede una risposta prima che la soluzione possa essere vista"
+          "label": "Richiedere la risposta prima di poter visualizzare la soluzione",
+          "default": true
         },
         {
-          "label": "Mostra la finestra di dialogo di conferma su \"Verifica\""
+          "label": "Mostra la finestra di dialogo di conferma su \"Controllo\".",
+          "default": false
         },
         {
-          "label": "Mostra la finestra di dialogo di conferma su \"Riprova\""
+          "label": "Mostra la finestra di dialogo di conferma su \"Riprova\".",
+          "default": false
         },
         {
-          "label": "Controlla automaticamente le risposte",
-          "description": "Attivare questa opzione renderà difficoltosa l'accessibilità. Assicurati di cosa stai facendo."
+          "label": "Controllo automatico delle risposte",
+          "default": false,
+          "description": "Abilitando questa opzione, l'accessibilit\u00e0 ne risentir\u00e0; assicuratevi di sapere cosa state facendo."
         },
         {
-          "label": "Percentuale di superamento della prova",
-          "description": "Questa impostazione spesso non avrà alcun effetto. È la percentuale del punteggio totale necessario per ottenere un punto in caso di attività che valgano complessivamente un punto, e per ottenere result.success in dichiarazioni xAPI."
+          "label": "Percentuale di superamento",
+          "description": "Spesso questa impostazione non ha alcun effetto. \u00c8 la percentuale del punteggio totale richiesta per ottenere 1 punto quando \u00e8 abilitato un punto per l'intero compito e per ottenere result.success nelle istruzioni xAPI.",
+          "default": 100
         },
         {
-          "label": "Visualizza punteggio",
-          "description": "Visualizza i punti guadagnati per ogni risposta"
+          "label": "Mostra i punti del punteggio",
+          "description": "Mostra i punti guadagnati per ogni risposta. Questa opzione non \u00e8 disponibile in modalit\u00e0 \"Risposta singola\" o se \u00e8 attivata l'opzione \"Assegna un punto per l'intero compito\".",
+          "default": true
         }
       ]
     },
     {
-      "label": "Finestra di conferma per la verifica",
+      "label": "Controllare la finestra di dialogo di conferma",
       "fields": [
         {
           "label": "Testo dell'intestazione",
-          "default": "Finito?"
-        },
-        {
-          "label": "Corpo del testo",
-          "default": "Sei sicuro di voler concludere?"
-        },
-        {
-          "label": "Etichetta del pulsante di annullamento",
-          "default": "Annulla"
-        },
-        {
-          "label": "Etichetta del pulsante di conferma",
-          "default": "Finito"
-        }
-      ]
-    },
-    {
-      "label": "Finestra di conferma per \"Riprova\"",
-      "fields": [
-        {
-          "label": "Testo dell'intestazione",
-          "default": "Vuoi riprovare?"
+          "default": "Finish ?"
         },
         {
           "label": "Testo del corpo",
-          "default": "Sei sicuro di voler riprovare?"
+          "default": "Are you sure you wish to finish ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Etichetta del pulsante di annullamento",
-          "default": "Annulla"
+          "label": "Etichetta del pulsante Annulla",
+          "default": "Cancel"
         },
         {
           "label": "Etichetta del pulsante di conferma",
-          "default": "Conferma"
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Finestra di conferma del tentativo",
+      "fields": [
+        {
+          "label": "Testo dell'intestazione",
+          "default": "Retry ?"
+        },
+        {
+          "label": "Testo del corpo",
+          "default": "Are you sure you wish to retry ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
+        },
+        {
+          "label": "Etichetta del pulsante Annulla",
+          "default": "Cancel"
+        },
+        {
+          "label": "Etichetta del pulsante di conferma",
+          "default": "Confirm"
         }
       ]
     }

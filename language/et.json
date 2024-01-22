@@ -1,46 +1,131 @@
 {
   "semantics": [
     {
-      "label": "Pilt või video",
+      "label": "Meedia",
       "fields": [
         {
-          "label": "Tüüp",
-          "description": "Pilt või video, mida kuvatakse küsimuse juures (mittekohustuslik element)."
+          "label": "T\u00fc\u00fcp",
+          "options": [
+            "H5P.Image 1.1",
+            "H5P.Video 1.6",
+            "H5P.Audio 1.5"
+          ],
+          "description": "Vabatahtlik meedia, mida kuvatakse k\u00fcsimuse kohal."
         },
         {
-          "label": "Keela pildi suuruse muutmine"
+          "label": "Pildi suumimise v\u00e4ljal\u00fclitamine",
+          "default": false,
+          "showWhen": {
+            "rules": [
+              {
+                "field": "type"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "label": "Küsimus"
+      "label": "K\u00fcsimus",
+      "tags": [
+        "strong",
+        "em",
+        "sub",
+        "sup",
+        "h2",
+        "h3",
+        "pre",
+        "code"
+      ]
     },
     {
-      "label": "Vastusevariandid",
-      "entity": "vastusevariant",
+      "label": "M\u00e4rgistus",
+      "entity": "notation",
       "field": {
-        "label": "Vastusevariant",
+        "label": "M\u00e4rgistus",
         "fields": [
           {
-            "label": "Tekst"
+            "description": "Lisa m\u00e4rkus",
+            "default": "Notation"
           },
           {
-            "label": "Õige"
+            "label": "Interaktiivne m\u00e4rkimine",
+            "description": "Kui m\u00e4rkeruut on m\u00e4rgitud, on m\u00e4rkeruut interaktiivne sisu vaates, vastasel juhul kasutatakse ainult SVG-d.",
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "label": "Saadaolevad valikud",
+      "entity": "option",
+      "field": {
+        "label": "Valik",
+        "fields": [
+          {
+            "label": "Tekst",
+            "tags": [
+              "strong",
+              "em",
+              "sub",
+              "sup",
+              "code"
+            ]
           },
           {
-            "label": "Vihje ja tagasiside",
+            "label": "M\u00e4rgistus",
+            "fields": [
+              {
+                "description": "Lisa m\u00e4rkus"
+              },
+              {
+                "label": "Interaktiivne m\u00e4rkimine",
+                "description": "Kui m\u00e4rkeruut on m\u00e4rgitud, on m\u00e4rkeruut interaktiivne sisu vaates, vastasel juhul kasutatakse ainult SVG-d.",
+                "default": false
+              }
+            ]
+          },
+          {
+            "label": "\u00d5ige"
+          },
+          {
+            "label": "N\u00f5uanded ja tagasiside",
             "fields": [
               {
                 "label": "Vihje tekst",
-                "description": "Suunav vihje vastajale, ilmub enne vastuse sisestamist."
+                "description": "Vihje kasutajale. See ilmub enne seda, kui kasutaja kontrollib oma vastust/vastuseid.",
+                "tags": [
+                  "p",
+                  "br",
+                  "strong",
+                  "em",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Tekst, mida kasutaja näeb pärast selle vastusevariandi sisestamist",
-                "description": "See tekst ilmub vastusevariandi alla kui kasutaja klõpsab \"Kontrolli\"."
+                "label": "Kui vastus on valitud, kuvatakse teade",
+                "description": "Kui see vastus on valitud, ilmub vastusevariandi \"check\" alla teade.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Tekst, mida kasutaja näeb pärast selle vastusevariandi valimata jätmist",
-                "description": "See tekst ilmub vastusevariandi alla kui kasutaja klõpsab \"Kontrolli\"."
+                "label": "Kui vastus ei ole valitud, kuvatakse teade",
+                "description": "Kui see vastus ei ole valitud, ilmub vastusevariandi \"check\" alla teade.",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               }
             ]
           }
@@ -48,7 +133,7 @@
       }
     },
     {
-      "label": "Üldine tagasiside",
+      "label": "\u00dcldine tagasiside",
       "fields": [
         {
           "widgets": [
@@ -56,18 +141,21 @@
               "label": "Vaikimisi"
             }
           ],
-          "label": "Määratle kohandatud tagasiside igale punktisumma vahemikule",
-          "description": "Näiteks: 0-20% halb tulemus, 21-91% keskmine tulemus, 91-100% suurepärane tulemus!",
-          "entity": "vahemik",
+          "label": "M\u00e4\u00e4rake kohandatud tagasiside mis tahes skoorivahemiku jaoks",
+          "description": "Vajutage nupule \"Lisa vahemik\", et lisada nii palju vahemikke kui vaja. N\u00e4ide: 0-20% halb tulemus, 21-91% keskmine tulemus, 91-100% suurep\u00e4rane tulemus!",
+          "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Punktisumma vahemik"
+                "label": "Tulemuste vahemik",
+                "default": 0
               },
-              {},
               {
-                "label": "Määratletud punktisummavahemiku tagasiside",
-                "placeholder": "Sisesta tagasiside"
+                "default": 100
+              },
+              {
+                "label": "Tagasiside m\u00e4\u00e4ratletud skoorivahemiku kohta",
+                "placeholder": "T\u00e4itke tagasiside"
               }
             ]
           }
@@ -75,182 +163,208 @@
       ]
     },
     {
-      "label": "Kasutajaliides tõlge mitmikvalikutele",
+      "label": "Kasutajaliidese t\u00f5lked mitme valiku jaoks",
       "fields": [
         {
-          "label": "Kontrolli vastust nupu silt",
-          "default": "Kontrolli"
+          "label": "Kontrolli vastusnupu silt",
+          "default": "Check"
         },
         {
-          "label": "Submit answer button label",
+          "label": "Vastuse esitamise nupu silt",
           "default": "Submit"
         },
         {
-          "label": "Näita lahendust nupu silt",
-          "default": "Näita lahendust"
+          "label": "N\u00e4ita lahenduse nupu etiketti",
+          "default": "Show solution"
         },
         {
-          "label": "Proovi uuesti nupu silt",
-          "default": "Proovi uuesti"
+          "label": "Nupu \"Retry\" m\u00e4rgistus",
+          "default": "Retry"
         },
         {
-          "label": "Vihje silt",
-          "default": "Näita vihjet"
+          "label": "Vihje etikett",
+          "default": "Show tip"
         },
         {
-          "label": "Punktisumma rea tekstiline esitus tekstilugeri kasutajaile",
-          "description": "Kasutatavad muutujad on :num ja :total",
-          "default": "Sa said :num punkti :total punktist"
+          "label": "Punktiiriba tekstiline esitus neile, kes kasutavad lugemisk\u00f5larit",
+          "description": "Saadaolevad muutujad on :num ja :total",
+          "default": "You got :num out of :total points"
         },
         {
-          "label": "Vihje on saadaval (ei näidata)",
-          "default": "Vihje on saadaval",
-          "description": "Tekstilugeriga kasutamiseks mõeldud tekst"
+          "label": "Vihje saadaval (ei kuvata)",
+          "default": "Tip available",
+          "description": "Ligip\u00e4\u00e4setavust k\u00e4sitlev tekst, mida kasutatakse loetavate inimeste jaoks"
         },
         {
-          "label": "Tagasiside on saadaval (ei näidata)",
-          "default": "Tagasiside on saadaval",
-          "description": "Tekstilugeriga kasutamiseks mõeldud tekst"
+          "label": "Tagasiside saadaval (ei kuvata)",
+          "default": "Feedback available",
+          "description": "Ligip\u00e4\u00e4setavust k\u00e4sitlev tekst, mida kasutatakse loetavate inimeste jaoks"
         },
         {
-          "label": "Loe tagasiside (ei näidata)",
-          "default": "Loe tagasiside",
-          "description": "Tekstilugeriga kasutamiseks mõeldud tekst"
+          "label": "Loe tagasisidet (ei kuvata)",
+          "default": "Read feedback",
+          "description": "Ligip\u00e4\u00e4setavust k\u00e4sitlev tekst, mida kasutatakse loetavate inimeste jaoks"
         },
         {
-          "label": "Vale vastus (ei näidata)",
-          "default": "Vale vastus",
-          "description": "Tekstilugeriga kasutamiseks mõeldud tekst"
+          "label": "Vale vastus (ei kuvata)",
+          "default": "Wrong answer",
+          "description": "Ligip\u00e4\u00e4setavust k\u00e4sitlev tekst, mida kasutatakse loetavate inimeste jaoks"
         },
         {
-          "label": "Õige vastus (ei näidata)",
-          "default": "Õige vastus",
-          "description": "Tekstilugeriga kasutamiseks mõeldud tekst"
+          "label": "\u00d5ige vastus (ei kuvata)",
+          "default": "Correct answer",
+          "description": "Ligip\u00e4\u00e4setavust k\u00e4sitlev tekst, mida kasutatakse loetavate inimeste jaoks"
         },
         {
-          "label": "Valik oleks pidanud olema märgitud",
-          "default": "Oleks pidanud olema märgitud"
+          "label": "Valik oleks pidanud olema kontrollitud",
+          "default": "Should have been checked"
         },
         {
-          "label": "Valik ei oleks tohtinud olla märgitud",
-          "default": "Ei oleks pidanud olema märgitud"
+          "label": "Valik ei oleks pidanud olema m\u00e4rgitud",
+          "default": "Should not have been checked"
         },
         {
-          "label": "\"Vastus nõutud\" teate tekst",
-          "default": "Palun vasta enne lahenduse vaatamist"
+          "label": "S\u00f5numi \"N\u00f5uab vastust\" tekst",
+          "default": "Please answer before viewing the solution"
         },
         {
-          "label": "Assistive technology description for \"Check\" button",
+          "label": "Abistava tehnoloogia kirjeldus nupu \"Check\" jaoks",
           "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
+          "label": "Abistava tehnoloogia kirjeldus nupu \"N\u00e4ita lahendust\" jaoks",
           "default": "Show the solution. The task will be marked with its correct solution."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
+          "label": "Abistava tehnoloogia kirjeldus nupu \"Retry\" jaoks",
           "default": "Retry the task. Reset all responses and start the task over again."
         }
       ]
     },
     {
-      "label": "Käitumisseaded",
-      "description": "Need valikud määravad, kuidas ülesanne käitub.",
+      "label": "K\u00e4itumuslikud seaded",
+      "description": "Need valikud v\u00f5imaldavad teil kontrollida, kuidas \u00fclesanne k\u00e4itub.",
       "fields": [
         {
-          "label": "Luba \"Proovi uuesti\" nupp"
+          "label": "L\u00fclita sisse nupp \"Taaskordamine\"",
+          "default": true
         },
         {
-          "label": "Luba \"Näita lahendust\" nupp"
+          "label": "L\u00fclita sisse nupp \"N\u00e4ita lahendust\"",
+          "default": true
         },
         {
-          "label": "Luba \"Kontrolli\" nupp"
+          "label": "Aktiveeri nupp \"Kontrolli\"",
+          "default": true
         },
         {
-          "label": "Küsimuse tüüp",
-          "description": "Vali küsimuste välimus ja käitumine.",
+          "label": "K\u00fcsimuse t\u00fc\u00fcp",
+          "description": "Valige k\u00fcsimuse v\u00e4limus ja k\u00e4itumine.",
+          "default": "auto",
           "options": [
             {
               "label": "Automaatne"
             },
             {
-              "label": "Mitmikvalik (märkeruudud)"
+              "label": "Mitme valikuv\u00f5imalus (m\u00e4rkeruudud)"
             },
             {
-              "label": "Üks valik (raadionupud)"
+              "label": "\u00dcks valik (raadionupud)"
             }
           ]
         },
         {
-          "label": "Anna üks punkt kogu ülesande eest",
-          "description": "Luba, et anda mitme õige vastuse eest kokku üks punkt. Seda valikut ei saa teha \"Üks vastus\" moodis."
+          "label": "Anda \u00fcks punkt kogu \u00fclesande eest",
+          "description": "V\u00f5imaldab anda kokku \u00fche punkti mitme \u00f5ige vastuse eest. See ei ole valikuv\u00f5imalus re\u017eiimis \"\u00dcksikvastused\".",
+          "default": false
         },
         {
-          "label": "Järjesta vastused juhuslikult",
-          "description": "Luba, et järjestada kuvatavad vastused juhuslikult."
+          "label": "Randomize vastused",
+          "description": "V\u00f5imaldab kuvatud vastuste j\u00e4rjekorra juhuslikuks muutmise.",
+          "default": true
         },
         {
-          "label": "Nõua vastust enne, kui lahendust vaadata saab"
+          "label": "N\u00f5uab vastust enne lahenduse vaatamist",
+          "default": true
         },
         {
-          "label": "Näita kinnitusdialoogi \"Kontrolli\" nupule vajutamisel"
+          "label": "N\u00e4ita kinnitusdialoogi \"Kontrolli\"",
+          "default": false
         },
         {
-          "label": "Näita kinnitusdialoogi \"Proovi uuesti\" nupule vajutamisel"
+          "label": "N\u00e4ita kinnitusdialoogi \"Taaskordamine\"",
+          "default": false
         },
         {
-          "label": "Vali vastused automaatselt",
-          "description": "Selle valiku lubamisel kannatab puuetega inimeste kasutajaelamus - veendu, et tead, mida teed."
+          "label": "Kontrollida automaatselt vastuseid",
+          "default": false,
+          "description": "Selle suvandi lubamine muudab ligip\u00e4\u00e4setavuse halvaks, veenduge, et te teate, mida teete."
         },
         {
-          "label": "Läbimisprotsent",
-          "description": "See seadistus ei tee sageli midagi. See on protsent kogu punktisummast, mis on vajalik ühe punkti saamiseks, kui lubatud on 'Üks punkt kogu ülesande eest' ja result.success saamiseks xAPI väljavõttes."
+          "label": "L\u00e4biviidud protsent",
+          "description": "Sellel seadistusel ei ole sageli mingit m\u00f5ju. See on protsent kogu punktisummast, mis on vajalik 1 punkti saamiseks, kui on lubatud \u00fcks punkt kogu \u00fclesande eest ja xAPI avaldustes result.success saamiseks.",
+          "default": 100
         },
         {
-          "label": "Näita punktisummasid",
-          "description": "Näita iga vastuse eest saadud punkte."
+          "label": "N\u00e4ita skooripunkte",
+          "description": "N\u00e4idake iga vastuse eest saadud punkte. See ei ole v\u00f5imalik re\u017eiimis \"\u00dcksikvastused\" v\u00f5i kui on lubatud valik \"Anna \u00fcks punkt kogu \u00fclesande eest\".",
+          "default": true
         }
       ]
     },
     {
-      "label": "Kontrolli kinnitusdialoog",
+      "label": "Kontrolli kinnituse dialoog",
       "fields": [
         {
           "label": "Pealkirja tekst",
-          "default": "Kas lõpetada?"
+          "default": "Finish ?"
         },
         {
-          "label": "Sisu tekst",
-          "default": "Kas oled kindel, et soovid lõpetada?"
+          "label": "Tekst",
+          "default": "Are you sure you wish to finish ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Katkesta nupu silt",
-          "default": "Ei"
+          "label": "T\u00fchista nupu silt",
+          "default": "Cancel"
         },
         {
           "label": "Kinnita nupu silt",
-          "default": "Jah"
+          "default": "Finish"
         }
       ]
     },
     {
-      "label": "Proovi uuesti kinnitusdialoog",
+      "label": "Kinnitusdialoogi korduvkatsetamine",
       "fields": [
         {
           "label": "Pealkirja tekst",
-          "default": "Proovida uuesti?"
+          "default": "Retry ?"
         },
         {
-          "label": "Sisu tekst",
-          "default": "Kas oled kindel, et soovid uuesti proovida?"
+          "label": "Tekst",
+          "default": "Are you sure you wish to retry ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Katkesta nupu tekst",
-          "default": "Ei"
+          "label": "T\u00fchista nupu silt",
+          "default": "Cancel"
         },
         {
-          "label": "Kinnita nupu tekst",
-          "default": "Jah"
+          "label": "Kinnita nupu silt",
+          "default": "Confirm"
         }
       ]
     }

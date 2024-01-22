@@ -5,42 +5,127 @@
       "fields": [
         {
           "label": "Type",
-          "description": "Optionele media, die boven de vraag wordt getoond."
+          "options": [
+            "H5P.Image 1.1",
+            "H5P.Video 1.6",
+            "H5P.Audio 1.5"
+          ],
+          "description": "Optionele media om boven de vraag weer te geven."
         },
         {
-          "label": "Beeld zoomen uitschakelen"
+          "label": "Afbeeldingen zoomen uitschakelen",
+          "default": false,
+          "showWhen": {
+            "rules": [
+              {
+                "field": "type"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "label": "Vraag"
+      "label": "Vraag",
+      "tags": [
+        "strong",
+        "em",
+        "sub",
+        "sup",
+        "h2",
+        "h3",
+        "pre",
+        "code"
+      ]
+    },
+    {
+      "label": "Notatie",
+      "entity": "notation",
+      "field": {
+        "label": "Notatie",
+        "fields": [
+          {
+            "description": "Notatie toevoegen",
+            "default": "Notation"
+          },
+          {
+            "label": "Interactieve notatie",
+            "description": "Als het selectievakje is ingeschakeld, zal de notatie interactief zijn in de inhoudsweergave, anders wordt alleen de SVG gebruikt.",
+            "default": false
+          }
+        ]
+      }
     },
     {
       "label": "Beschikbare opties",
-      "entity": "optie",
+      "entity": "option",
       "field": {
         "label": "Optie",
         "fields": [
           {
-            "label": "Tekst"
+            "label": "Tekst",
+            "tags": [
+              "strong",
+              "em",
+              "sub",
+              "sup",
+              "code"
+            ]
           },
           {
-            "label": "Juist"
+            "label": "Notatie",
+            "fields": [
+              {
+                "description": "Notatie toevoegen"
+              },
+              {
+                "label": "Interactieve notatie",
+                "description": "Als het selectievakje is ingeschakeld, zal de notatie interactief zijn in de inhoudsweergave, anders wordt alleen de SVG gebruikt.",
+                "default": false
+              }
+            ]
+          },
+          {
+            "label": "Correct"
           },
           {
             "label": "Tips en feedback",
             "fields": [
               {
-                "label": "Tekst voor tip",
-                "description": "Tip voor de gebruiker. Deze zal verschijnen voordat de gebruiker zijn antwoord(en) controleert."
+                "label": "Tip tekst",
+                "description": "Hint voor de gebruiker. Deze wordt weergegeven voordat de gebruiker zijn antwoord(en) controleert.",
+                "tags": [
+                  "p",
+                  "br",
+                  "strong",
+                  "em",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Getoond bericht als het antwoord is geselecteerd",
-                "description": "Bericht zal onder het antwoord verschijnen bij \"Controleer\" als dit antwoord is geselecteerd."
+                "label": "Bericht dat wordt weergegeven als antwoord is geselecteerd",
+                "description": "Als dit antwoord is geselecteerd, verschijnt er een bericht onder het antwoord bij \"aanvinken\".",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Getoond bericht als het antwoord niet is geselecteerd",
-                "description": "Bericht zal onder het antwoord verschijnen bij \"Controleer\" als dit antwoord niet is geselecteerd."
+                "label": "Bericht wordt weergegeven als antwoord niet is geselecteerd",
+                "description": "Als dit antwoord niet is geselecteerd, verschijnt er een bericht onder het antwoord op \"controleren\".",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               }
             ]
           }
@@ -48,7 +133,7 @@
       }
     },
     {
-      "label": "Algehele feedback",
+      "label": "Algemene feedback",
       "fields": [
         {
           "widgets": [
@@ -56,17 +141,20 @@
               "label": "Standaard"
             }
           ],
-          "label": "Definieer aangepaste feedback voor elke scorereeks",
-          "description": "Druk op de \"Voeg scorereeks\"-knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
-          "entity": "reeks",
+          "label": "Aangepaste feedback defini\u00ebren voor elk scorebereik",
+          "description": "Klik op de knop \"Bereik toevoegen\" om zoveel bereiken toe te voegen als je nodig hebt. Voorbeeld: 0-20% Slechte score, 21-91% Gemiddelde score, 91-100% Goede score!",
+          "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Scorereeks"
+                "label": "Scorebereik",
+                "default": 0
               },
-              {},
               {
-                "label": "Feedback voor de gedefinieerde scorereeks",
+                "default": 100
+              },
+              {
+                "label": "Feedback voor gedefinieerd scorebereik",
                 "placeholder": "Vul de feedback in"
               }
             ]
@@ -75,81 +163,81 @@
       ]
     },
     {
-      "label": "Vertalingen van gebruikersinterface voor meerkeuze",
+      "label": "Vertalingen gebruikersinterface voor meerkeuze",
       "fields": [
         {
-          "label": "Label voor \"Controleer\"-knop",
-          "default": "Controleer"
+          "label": "Label antwoordknop controleren",
+          "default": "Check"
         },
         {
-          "label": "Submit answer button label",
+          "label": "Knop Label Antwoord indienen",
           "default": "Submit"
         },
         {
-          "label": "Label voor \"Toon oplossing\"-knop",
-          "default": "Toon oplossing"
+          "label": "Toon het label van de oplossingsknop",
+          "default": "Show solution"
         },
         {
-          "label": "Label voor \"Opnieuw\"-knop",
-          "default": "Opnieuw"
+          "label": "Label knop Opnieuw proberen",
+          "default": "Retry"
         },
         {
-          "label": "Label voor tip",
-          "default": "Toon tip"
+          "label": "Tiplabel",
+          "default": "Show tip"
         },
         {
-          "label": "Tekstuele weergave van de scorebalk voor de gebruikers van de schermlezer",
+          "label": "Tekstuele weergave van de scorebalk voor mensen die een voorleesspeaker gebruiken",
           "description": "Beschikbare variabelen zijn :num en :total",
-          "default": "Je hebt :num van de :total punten"
+          "default": "You got :num out of :total points"
         },
         {
-          "label": "Tip beschikbaar (niet getoond)",
-          "default": "Tip beschikbaar",
-          "description": "Toegankelijkheidstekst voor schermlezers"
+          "label": "Tip beschikbaar (niet weergegeven)",
+          "default": "Tip available",
+          "description": "Toegankelijkheidstekst gebruikt voor voorlezers"
         },
         {
-          "label": "Feedback beschikbaar (niet getoond)",
-          "default": "Feedback beschikbaar",
-          "description": "Toegankelijkheidstekst voor schermlezers"
+          "label": "Feedback beschikbaar (niet weergegeven)",
+          "default": "Feedback available",
+          "description": "Toegankelijkheidstekst gebruikt voor voorlezers"
         },
         {
-          "label": "Lees feedback (niet getoond)",
-          "default": "Lees feedback",
-          "description": "Toegankelijkheidstekst voor schermlezers"
+          "label": "Feedback lezen (niet weergegeven)",
+          "default": "Read feedback",
+          "description": "Toegankelijkheidstekst gebruikt voor voorlezers"
         },
         {
-          "label": "Onjuist antwoord (niet getoond)",
-          "default": "Onjuist antwoord",
-          "description": "Toegankelijkheidstekst voor schermlezers"
+          "label": "Fout antwoord (wordt niet weergegeven)",
+          "default": "Wrong answer",
+          "description": "Toegankelijkheidstekst gebruikt voor voorlezers"
         },
         {
           "label": "Juist antwoord (niet weergegeven)",
-          "default": "Juist antwoord",
-          "description": "Toegankelijkheidstekst voor schermlezers"
+          "default": "Correct answer",
+          "description": "Toegankelijkheidstekst gebruikt voor voorlezers"
         },
         {
-          "label": "Optie zou gekozen moeten zijn",
-          "default": "Zou gekozen moeten zijn"
+          "label": "Optie had moeten worden aangevinkt",
+          "default": "Should have been checked"
         },
         {
-          "label": "Optie zou niet gekozen moeten zijn",
-          "default": "Zou niet gekozen mogen zijn"
+          "label": "Optie had niet aangevinkt moeten zijn",
+          "default": "Should not have been checked"
         },
         {
-          "label": "Tekst van \"Antwoord vereist\"-bericht",
-          "default": "Beantwoord voor je de oplossing bekijkt"
+          "label": "Tekst voor bericht \"Antwoord vereist",
+          "default": "Please answer before viewing the solution"
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Controleer\"-knop",
-          "default": "Controleer de antwoorden. De antwoorden worden gemarkeerd als correct, incorrect, of niet-beantwoord."
+          "label": "Beschrijving hulptechnologie voor knop \"Controleren",
+          "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Toon oplossing\"-knop",
-          "default": "Toon de oplossing. De taak wordt gemarkeerd met de juiste oplossing."
+          "label": "Hulptechnologie beschrijving voor \"Toon oplossing\" knop",
+          "default": "Show the solution. The task will be marked with its correct solution."
         },
         {
-          "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\"-knop",
-          "default": "Probeer de taak opnieuw. Reset alle antwoorden en start de taak opnieuw."
+          "label": "Hulptechnologie beschrijving voor \"Opnieuw proberen\" knop",
+          "default": "Retry the task. Reset all responses and start the task over again."
         }
       ]
     },
@@ -158,99 +246,125 @@
       "description": "Met deze opties kun je bepalen hoe de taak zich gedraagt.",
       "fields": [
         {
-          "label": "Schakel \"Opnieuw\"-knop in"
+          "label": "Knop \"Opnieuw proberen\" inschakelen",
+          "default": true
         },
         {
-          "label": "Schakel \"Toon oplossing\"-knop in"
+          "label": "Schakel de knop \"Oplossing weergeven\" in",
+          "default": true
         },
         {
-          "label": "Schakel \"Controleer\"-knop in"
+          "label": "Knop \"Controleren\" inschakelen",
+          "default": true
         },
         {
-          "label": "Vraagtype",
-          "description": "Selecteer het uiterlijk en het gedrag van de vraag.",
+          "label": "Type vraag",
+          "description": "Selecteer het uiterlijk en gedrag van de vraag.",
+          "default": "auto",
           "options": [
             {
               "label": "Automatisch"
             },
             {
-              "label": "Meermeerkeuze (Checkboxes)"
+              "label": "Meerkeuze (selectievakjes)"
             },
             {
-              "label": "Enkele keuze (Radio-knoppen)"
+              "label": "Enkele keuze (keuzerondjes)"
             }
           ]
         },
         {
-          "label": "Geef één punt voor de hele taak",
-          "description": "Schakel in om een totaal van één punt te geven voor meerdere juiste antwoorden. Dit is geen optie bij \"Enkele keuze\" modus."
+          "label": "Geef \u00e9\u00e9n punt voor de hele opdracht",
+          "description": "Inschakelen om een totaal van \u00e9\u00e9n punt te geven voor meerdere juiste antwoorden. Dit is geen optie in de modus \"E\u00e9n antwoord\".",
+          "default": false
         },
         {
-          "label": "Randomiseer de antwoorden",
-          "description": "Schakel in om de volgorde van de antwoorden te randomiseren."
+          "label": "Antwoorden willekeurig verdelen",
+          "description": "Inschakelen om de volgorde van de weergegeven antwoorden willekeurig te maken.",
+          "default": true
         },
         {
-          "label": "Antwoord is vereist voordat de oplossing kan worden getoond"
+          "label": "Antwoord vereist voordat de oplossing kan worden bekeken",
+          "default": true
         },
         {
-          "label": "Toon bevestigingsvenster bij \"Controleer\""
+          "label": "Bevestigingsvenster tonen bij \"Controleren",
+          "default": false
         },
         {
-          "label": "Toon bevestigingsdialoog bij \"Opnieuw\""
+          "label": "Bevestigingsvenster tonen bij \"Opnieuw proberen\"",
+          "default": false
         },
         {
-          "label": "Controleer antwoorden automatisch",
-          "description": "Deze optie inschakelen zorgt voor moeilijke toegankelijkheid. Zorg ervoor dat je zeker bent van je keuze."
+          "label": "Antwoorden automatisch controleren",
+          "default": false,
+          "description": "Als je deze optie inschakelt, zal de toegankelijkheid hieronder lijden, zorg ervoor dat je weet wat je doet."
         },
         {
           "label": "Slagingspercentage",
-          "description": "Deze instelling heeft vaak geen effect. Dit is het percentage van de totale score die vereist is om 1 punt te krijgen voor een hele taak wanneer dit is ingeschakeld alsook om een result.success te krijgen in de xAPI statements."
+          "description": "Deze instelling heeft vaak geen effect. Het is het percentage van de totale score dat nodig is voor het krijgen van 1 punt wanneer 1 punt voor de hele taak is ingeschakeld, en voor het krijgen van result.success in xAPI statements.",
+          "default": 100
         },
         {
           "label": "Toon scorepunten",
-          "description": "Toon verdiende punten voor elk antwoord. Dit is geen optie bij 'enkel antwoord'-modus of wanneer 'geef één punt voor gehele taak'-optie is ingeschakeld."
+          "description": "Toon de verdiende punten voor elk antwoord. Dit is geen optie in de modus 'E\u00e9n antwoord' of als de optie 'E\u00e9n punt geven voor de hele taak' is ingeschakeld.",
+          "default": true
         }
       ]
     },
     {
-      "label": "Bevestigingsdialoog bij \"Controleer\"",
+      "label": "Bevestigingsvenster controleren",
       "fields": [
         {
           "label": "Koptekst",
-          "default": "Stoppen?"
+          "default": "Finish ?"
         },
         {
-          "label": "Hoofdtekst",
-          "default": "Weet je zeker dat je wilt stoppen?"
+          "label": "Tekst",
+          "default": "Are you sure you wish to finish ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Label van \"Annuleer\"-knop",
-          "default": "Annuleer"
+          "label": "Label knop Annuleren",
+          "default": "Cancel"
         },
         {
-          "label": "Label van \"Bevestig\"-knop",
-          "default": "Stoppen"
+          "label": "Label bevestig knop",
+          "default": "Finish"
         }
       ]
     },
     {
-      "label": "Bevestigingsdialoog voor \"Opnieuw\"",
+      "label": "Bevestigingsvenster opnieuw proberen",
       "fields": [
         {
           "label": "Koptekst",
-          "default": "Opnieuw?"
+          "default": "Retry ?"
         },
         {
-          "label": "Hoofdtekst",
-          "default": "Weet je zeker dat je het opnieuw wilt proberen?"
+          "label": "Tekst",
+          "default": "Are you sure you wish to retry ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Label van \"Annuleer\"-knop",
-          "default": "Annuleer"
+          "label": "Label knop Annuleren",
+          "default": "Cancel"
         },
         {
-          "label": "Label van \"Bevestig\"-knop",
-          "default": "Bevestig"
+          "label": "Label bevestig knop",
+          "default": "Confirm"
         }
       ]
     }

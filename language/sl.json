@@ -5,42 +5,127 @@
       "fields": [
         {
           "label": "Tip",
-          "description": "Neobvezna nastavitev dodatnega medija za prikaz nad vprašanjem."
+          "options": [
+            "H5P.Image 1.1",
+            "H5P.Video 1.6",
+            "H5P.Audio 1.5"
+          ],
+          "description": "Neobvezni mediji, ki se prika\u017eejo nad vpra\u0161anjem."
         },
         {
-          "label": "Onemogoči povečavo slike"
+          "label": "Onemogo\u010danje pove\u010dave slike",
+          "default": false,
+          "showWhen": {
+            "rules": [
+              {
+                "field": "type"
+              }
+            ]
+          }
         }
       ]
     },
     {
-      "label": "Vprašanje"
+      "label": "Vpra\u0161anje",
+      "tags": [
+        "strong",
+        "em",
+        "sub",
+        "sup",
+        "h2",
+        "h3",
+        "pre",
+        "code"
+      ]
     },
     {
-      "label": "Razpoložljivi odgovori",
-      "entity": "odgovor",
+      "label": "Zapis",
+      "entity": "notation",
       "field": {
-        "label": "Odgovor",
+        "label": "Zapis",
         "fields": [
           {
-            "label": "Besedilo"
+            "description": "Dodajanje zapisa",
+            "default": "Notation"
           },
           {
-            "label": "Pravilen"
+            "label": "Interaktivni zapis",
+            "description": "\u010ce je potrditveno polje ozna\u010deno, bo notacija interaktivna v vsebinskem pogledu, sicer bo uporabljen samo SVG.",
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "label": "Razpolo\u017eljive mo\u017enosti",
+      "entity": "option",
+      "field": {
+        "label": "Mo\u017enost",
+        "fields": [
+          {
+            "label": "Besedilo",
+            "tags": [
+              "strong",
+              "em",
+              "sub",
+              "sup",
+              "code"
+            ]
           },
           {
-            "label": "Namig in povratna informacija",
+            "label": "Zapis",
             "fields": [
               {
-                "label": "Besedilo namiga",
-                "description": "Namig udeležencem, ki se pokaže pred preverjanjem pravilnosti odgovora."
+                "description": "Dodajanje zapisa"
               },
               {
-                "label": "Sporočilo, ko je bil odgovor izbran",
-                "description": "Povratna informacija udeležencu ob izbiri odgovora. Informacija se prikaže po potrdivi z gumbom \"Preveri\"."
+                "label": "Interaktivni zapis",
+                "description": "\u010ce je potrditveno polje ozna\u010deno, bo notacija interaktivna v vsebinskem pogledu, sicer bo uporabljen samo SVG.",
+                "default": false
+              }
+            ]
+          },
+          {
+            "label": "Pravilno"
+          },
+          {
+            "label": "Nasveti in povratne informacije",
+            "fields": [
+              {
+                "label": "Besedilo nasveta",
+                "description": "Namig za uporabnika. Ta se prika\u017ee, preden uporabnik preveri svoj odgovor/odgovore.",
+                "tags": [
+                  "p",
+                  "br",
+                  "strong",
+                  "em",
+                  "a",
+                  "code"
+                ]
               },
               {
-                "label": "Sporočilo, ko odgovor ni bil izbran",
-                "description": "Povratna informacija udeležencu, ko odgovor ni izbran. Informacija se prikaže po potrdivi z gumbom \"Preveri\"."
+                "label": "Sporo\u010dilo, ki se prika\u017ee, \u010de je izbran odgovor",
+                "description": "\u010ce je ta odgovor izbran, se pod odgovorom prika\u017ee sporo\u010dilo \"preveri\".",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
+              },
+              {
+                "label": "Prikazano sporo\u010dilo, \u010de odgovor ni izbran",
+                "description": "\u010ce odgovor ni izbran, se pod odgovorom prika\u017ee sporo\u010dilo \"preveri\".",
+                "tags": [
+                  "strong",
+                  "em",
+                  "sub",
+                  "sup",
+                  "a",
+                  "code"
+                ]
               }
             ]
           }
@@ -48,7 +133,7 @@
       }
     },
     {
-      "label": "Splošna povratna informacija",
+      "label": "Splo\u0161ne povratne informacije",
       "fields": [
         {
           "widgets": [
@@ -56,18 +141,21 @@
               "label": "Privzeto"
             }
           ],
-          "label": "Določi ločeno povratno informacijo za vsak razpon rezultatov",
-          "description": "Kliknite gumb \"Dodaj razpon\" za dodajanje dodatnih razponov. Primer: 0-20 % Slab rezultat, 21-91 % Povprečen rezultat, 91-100 % Odličen rezultat!",
-          "entity": "razpon",
+          "label": "Opredelite povratne informacije po meri za poljubno obmo\u010dje ocen",
+          "description": "S klikom na gumb \"Dodaj obmo\u010dje\" dodajte toliko obmo\u010dij, kot jih potrebujete. Primer: 0-20 % slaba ocena, 21-91 % povpre\u010dna ocena, 91-100 % odli\u010dna ocena!",
+          "entity": "range",
           "field": {
             "fields": [
               {
-                "label": "Razpon rezultatov"
+                "label": "Razpon to\u010dk",
+                "default": 0
               },
-              {},
               {
-                "label": "Povratna informacija za definiran razpon rezultatov",
-                "placeholder": "Vnesite povratno informacijo"
+                "default": 100
+              },
+              {
+                "label": "Povratne informacije za dolo\u010den razpon to\u010dk",
+                "placeholder": "Izpolnite povratne informacije"
               }
             ]
           }
@@ -75,182 +163,208 @@
       ]
     },
     {
-      "label": "Prevodi uporabniškega vmesnika",
+      "label": "Prevodi uporabni\u0161kega vmesnika za ve\u010d izbirnih mo\u017enosti",
       "fields": [
         {
-          "label": "Besedilo za gumb \"Preveri\"",
-          "default": "Preveri"
+          "label": "Oznaka gumba za preverjanje odgovora",
+          "default": "Check"
         },
         {
-          "label": "Submit answer button label",
+          "label": "Oznaka gumba za oddajo odgovora",
           "default": "Submit"
         },
         {
-          "label": "Besedilo za gumb \"Prikaži rešitev\"",
-          "default": "Prikaži rešitev"
+          "label": "Prika\u017ei etiketo gumba za re\u0161itev",
+          "default": "Show solution"
         },
         {
-          "label": "Besedilo za gumb \"Poskusi ponovno\"",
-          "default": "Poskusi ponovno"
+          "label": "Oznaka gumba Ponovi poskus",
+          "default": "Retry"
         },
         {
-          "label": "Besedilo namiga za odgovor",
-          "default": "Namig"
+          "label": "Nalepka z nasvetom",
+          "default": "Show tip"
         },
         {
-          "label": "Besedilo, ki ga bralnik zaslona uporabi za izražanje napredka",
-          "description": "Spremenljivki sta :num in :total",
-          "default": "Napredek :num od :total"
+          "label": "Besedilni prikaz vrstice z rezultati za tiste, ki uporabljajo bralnik",
+          "description": "Na voljo sta spremenljivki :num in :total",
+          "default": "You got :num out of :total points"
         },
         {
-          "label": "Na voljo je namig (ni prikazan)",
-          "default": "Na voljo je namig",
-          "description": "Besedilo za bralnik zaslona"
+          "label": "Napitnina na voljo (ni prikazana)",
+          "default": "Tip available",
+          "description": "Dostopno besedilo, ki se uporablja za bralce"
         },
         {
-          "label": "Na voljo je povratna informacija (ni prikazana)",
-          "default": "Na voljo je povratna informacija",
-          "description": "Besedilo za bralnik zaslona"
+          "label": "Povratne informacije na voljo (ni prikazano)",
+          "default": "Feedback available",
+          "description": "Dostopno besedilo, ki se uporablja za bralce"
         },
         {
-          "label": "Preveri povratno informacijo (ni prikazana)",
-          "default": "Preveri povratno informacijo",
-          "description": "Besedilo za bralnik zaslona"
+          "label": "Preberite povratne informacije (ni prikazano)",
+          "default": "Read feedback",
+          "description": "Dostopno besedilo, ki se uporablja za bralce"
         },
         {
-          "label": "Nepravilen odgovor (ni prikazan)",
-          "default": "Nepravilen odgovor",
-          "description": "Besedilo za bralnik zaslona"
+          "label": "Napa\u010den odgovor (ni prikazan)",
+          "default": "Wrong answer",
+          "description": "Dostopno besedilo, ki se uporablja za bralce"
         },
         {
-          "label": "Pravilen odgovor (ni prikazan)",
-          "default": "Pravilen odgovor",
-          "description": "Besedilo za bralnik zaslona"
+          "label": "Pravilni odgovor (ni prikazan)",
+          "default": "Correct answer",
+          "description": "Dostopno besedilo, ki se uporablja za bralce"
         },
         {
-          "label": "Odgovor bi moral biti izbran",
-          "default": "Odgovor bi moral biti izbran"
+          "label": "Mo\u017enost bi morala biti preverjena",
+          "default": "Should have been checked"
         },
         {
-          "label": "Odgovor ne bi smel biti izbran",
-          "default": "Odgovor ne bi smel biti izbran"
+          "label": "Mo\u017enost ne bi smela biti ozna\u010dena",
+          "default": "Should not have been checked"
         },
         {
-          "label": "Besedilo za manjkajoč odgovor",
-          "default": "Pred ogledom rešitve je potrebno odgovoriti na vprašanje"
+          "label": "Besedilo za sporo\u010dilo \"Zahteva odgovor\"",
+          "default": "Please answer before viewing the solution"
         },
         {
-          "label": "Assistive technology description for \"Check\" button",
+          "label": "Opis pomo\u017ene tehnologije za gumb \"Preveri\"",
           "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
         },
         {
-          "label": "Assistive technology description for \"Show Solution\" button",
+          "label": "Opis pomo\u017ene tehnologije za gumb \"Prika\u017ei re\u0161itev\"",
           "default": "Show the solution. The task will be marked with its correct solution."
         },
         {
-          "label": "Assistive technology description for \"Retry\" button",
+          "label": "Opis pomo\u017ene tehnologije za gumb \"Ponovi\"",
           "default": "Retry the task. Reset all responses and start the task over again."
         }
       ]
     },
     {
-      "label": "Nastavitve interakcije",
-      "description": "Nastavitve omogočajo nadzor nad interakcijo aktivnosti za udeležence.",
+      "label": "Vedenjske nastavitve",
+      "description": "S temi mo\u017enostmi lahko nadzorujete, kako se bo opravilo obna\u0161alo.",
       "fields": [
         {
-          "label": "Omogoči gumb \"Poskusi ponovno\""
+          "label": "Omogo\u010dite gumb \"Ponovi\"",
+          "default": true
         },
         {
-          "label": "Omogoči gumb \"Prikaži rešitev\""
+          "label": "Omogo\u010dite gumb \"Prika\u017ei re\u0161itev\"",
+          "default": true
         },
         {
-          "label": "Omogoči gumb \"Preveri\""
+          "label": "Omogo\u010dite gumb \"Preveri\"",
+          "default": true
         },
         {
-          "label": "Tip vprašanja",
-          "description": "Ureditev videza okenca za podajanje odgovorov.",
+          "label": "Vrsta vpra\u0161anja",
+          "description": "Izberite videz in obna\u0161anje vpra\u0161anja.",
+          "default": "auto",
           "options": [
             {
-              "label": "Določi samodejno"
+              "label": "Samodejno"
             },
             {
-              "label": "Potrditveno polje za več odgovorov (Checkboxes)"
+              "label": "Ve\u010d izbir (potrditvena polja)"
             },
             {
-              "label": "Izbirni gumb za en odgovor (Radio Buttons)"
+              "label": "Ena izbira (radijski gumbi)"
             }
           ]
         },
         {
-          "label": "Aktivnost oceni kot celoto",
-          "description": "Aktivnost se oceni z 1 točko kot celota. Nastavitev je smiselna predvibem ob tipu vprašanja z več možnimi odgovori (Checkboxes)."
+          "label": "Dajte eno to\u010dko za celotno nalogo",
+          "description": "Za ve\u010d pravilnih odgovorov lahko dobite skupaj eno to\u010dko. V na\u010dinu z enim odgovorom ta mo\u017enost ni mogo\u010da.",
+          "default": false
         },
         {
-          "label": "Premešaj odgovore",
-          "description": "Naključen prikaz odgovorov."
+          "label": "Naklju\u010dni odgovori",
+          "description": "Omogo\u010dite naklju\u010dni vrstni red prikazanih odgovorov.",
+          "default": true
         },
         {
-          "label": "Pred ogledom rešitve je potrebno podati vibe odgovore"
+          "label": "Preden si lahko ogledate re\u0161itev, zahtevajte odgovor",
+          "default": true
         },
         {
-          "label": "Pred zaključkom aktivnosti zahtevaj potrditev"
+          "label": "Prika\u017ei potrditveno pogovorno okno na \"Preveri\"",
+          "default": false
         },
         {
-          "label": "Pred ponovitvijo aktivnosti zahtevaj potrditev"
+          "label": "Prika\u017ei potrditveno pogovorno okno pri \"Ponovi poskus\"",
+          "default": false
         },
         {
-          "label": "Sprotno preverjaj vnesene odgovore",
-          "description": "Nastavitev lahko obremenjuje delovanje spletne strani."
+          "label": "Samodejno preverjanje odgovorov",
+          "default": false,
+          "description": "\u010ce omogo\u010dite to mo\u017enost, bo to vplivalo na dostopnost, zato se prepri\u010dajte, da veste, kaj po\u010dnete."
         },
         {
-          "label": "Prag za napredovanje",
-          "description": "Odstotek, ki je potreben za uspešen zaključek naloge oz. prejeto 1 točko. Nastavitev ima učinek zgolj pri izbiri \"Aktivnost oceni kot celoto\"."
+          "label": "Odstotek uspe\u0161nosti",
+          "description": "Ta nastavitev pogosto nima nobenega u\u010dinka. To je odstotek skupnega rezultata, ki je potreben za pridobitev 1 to\u010dke, kadar je omogo\u010dena ena to\u010dka za celotno nalogo, in za pridobitev rezultata.success v izjavah xAPI.",
+          "default": 100
         },
         {
-          "label": "Dosežene točke prikaži sproti",
-          "description": "Udeležencem prikaže dosežene točke pri vsakem podanem odgovoru. Nastavitev nima učinka pri izbiri \"Izbirni gumb za en odgovor (Radio Buttons)\" ali \"Aktivnost oceni kot celoto\"."
+          "label": "Prika\u017ei \u0161tevilo to\u010dk",
+          "description": "Prika\u017eite to\u010dke, ki ste jih prejeli za vsak odgovor. Ta mo\u017enost ne bo na voljo v na\u010dinu \"en odgovor\" ali \u010de je omogo\u010dena mo\u017enost \"dati eno to\u010dko za celotno nalogo\".",
+          "default": true
         }
       ]
     },
     {
-      "label": "Pogovorno okno pred oddajo odgovora",
+      "label": "Preverite pogovorno okno za potrditev",
       "fields": [
         {
-          "label": "Naslov",
-          "default": "Zaključi?"
+          "label": "Besedilo v glavi",
+          "default": "Finish ?"
         },
         {
-          "label": "Besedilo telesa pogovornega okna",
-          "default": "Ste prepričani, da želite zaključiti?"
+          "label": "Osnovno besedilo",
+          "default": "Are you sure you wish to finish ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Besedilo gumba Prekliči",
-          "default": "Prekliči"
+          "label": "Oznaka gumba Prekli\u010di",
+          "default": "Cancel"
         },
         {
-          "label": "Besedilo gumba Potrdi",
-          "default": "Potrdi"
+          "label": "Oznaka gumba za potrditev",
+          "default": "Finish"
         }
       ]
     },
     {
-      "label": "Pogovorno okno pred ponovitvijo aktivnosti",
+      "label": "Potrditveno pogovorno okno Ponovi poskus",
       "fields": [
         {
-          "label": "Naslov",
-          "default": "Poskusi ponovno?"
+          "label": "Besedilo v glavi",
+          "default": "Retry ?"
         },
         {
-          "label": "Besedilo telesa pogovornega okna",
-          "default": "Ste prepričani, da želite poskusiti ponovno?"
+          "label": "Osnovno besedilo",
+          "default": "Are you sure you wish to retry ?",
+          "tags": [
+            "strong",
+            "em",
+            "del",
+            "u",
+            "code"
+          ]
         },
         {
-          "label": "Besedilo gumba Prekliči",
-          "default": "Prekliči"
+          "label": "Oznaka gumba Prekli\u010di",
+          "default": "Cancel"
         },
         {
-          "label": "Besedilo gumba Potrdi",
-          "default": "Potrdi"
+          "label": "Oznaka gumba za potrditev",
+          "default": "Confirm"
         }
       ]
     }
